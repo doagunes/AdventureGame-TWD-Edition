@@ -4,5 +4,8 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("benhur <3 dogi");
+        System.out.println("çakılişkooooo <3");
+        System.out.println("smkldnskdjfn");
+        
     }
 }
