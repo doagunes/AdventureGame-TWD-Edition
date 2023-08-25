@@ -1,9 +1,25 @@
 import java.util.ArrayList;
 
 public class Chapter {
-
     private int chapterNo;
 
+    ArrayList<Places> places = new ArrayList<>();
+    Places hospital = new Places("hospital");
+    public ArrayList<Places> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(ArrayList<Places> places) {
+        this.places = places;
+    }
+
+    public Places getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Places hospital) {
+        this.hospital = hospital;
+    }
 
     ArrayList<Mission> missions1 = new ArrayList<>();
     ArrayList<Mission> missions2 = new ArrayList<>();
@@ -99,6 +115,11 @@ public class Chapter {
             
         }
 
+    }
+
+    public void addCharactersToPlaces(int chapterNo) {
+        hospital.getCharacters().add(rick);
+        hospital.getCharacters().add(zombie);
     }
 
     Inventory rickInventory = new Inventory("Colt Python");
