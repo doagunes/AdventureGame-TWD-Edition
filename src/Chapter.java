@@ -8,6 +8,12 @@ public class Chapter {
     ArrayList<Mission> missions3 = new ArrayList<>();
     ArrayList<Mission> missions4 = new ArrayList<>();
 
+    ArrayList<Places> places1 = new ArrayList<>();
+    ArrayList<Places> places2 = new ArrayList<>();
+    ArrayList<Places> places3 = new ArrayList<>();
+    ArrayList<Places> places4 = new ArrayList<>();
+
+
     Inventory rickInventory = new Inventory("Colt Python");
     Inventory morganInventory = new Inventory();
     Inventory darlyInventory = new Inventory();
@@ -53,6 +59,27 @@ public class Chapter {
     Mission m34 = new Mission("WoodBury", "Save Glenn and Maggie", governor);
     Mission m35 = new Mission("Prison", "Battle with the governor and his crew", governor);
 
+    /*
+        Burada mission 4 objeleri oluşturulacak!!!!
+
+     */
+
+    Places p11 = new Places("Hospital");
+    Places p12 = new Places("City Center");
+    Places p13 = new Places("Camp");
+    Places p14 = new Places("Forest");
+    Places p21 = new Places("Highway");
+    Places p22 = new Places("Farm");
+    Places p23 = new Places("Forest");
+    Places p31 = new Places("Prison");
+    Places p32 = new Places("WoodBury");
+    Places p33 = new Places("Forest");
+    Places p41 = new Places("Prison");
+    Places p42 = new Places("Forest");
+    Places p43 = new Places("Not Named"); // Todo: Get Named
+    Places p44 = new Places("Not Named"); // Todo: Get Named
+
+    
 
     public Chapter(int no) {
 
@@ -61,19 +88,33 @@ public class Chapter {
                     missions1.add(m12);
                     missions1.add(m13);
                     missions1.add(m14);
+                    places1.add(p11);
+                    places1.add(p12);
+                    places1.add(p13);
+                    places1.add(p14);
                     break;
             case 2: missions2.add(m21);
                     missions2.add(m22);
                     missions2.add(m23);
                     missions2.add(m24);
                     missions2.add(m25);
+                    places2.add(p21);
+                    places2.add(p22);
+                    places2.add(p23);
                     break;
             case 3: missions3.add(m31);
                     missions3.add(m32);
                     missions3.add(m33);
                     missions3.add(m34);
                     missions3.add(m35);
+                    places3.add(p31);
+                    places3.add(p32);
+                    places3.add(p33);
                     break;
+            case 4: places4.add(p41);
+                    places4.add(p42);
+                    places4.add(p43);
+                    places4.add(p44);
         }
 
     }
