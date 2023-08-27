@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Chapter {
     private int chapterNo;
@@ -31,8 +32,9 @@ public class Chapter {
             (double) 1/20, "Okay daddy, love ya", "I am not a kid any more, okay!!");
     Character governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
             (double) 2/10, "", "I am not a kid any more, okay!!");
-    Character zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 4,
+    Character zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
             (double) 1 / 10, "whaaaaaaaa", "whaaaaaaaa");
+
 
     private int missionIndex = 0;
     private int mission2Index = 0;
@@ -120,6 +122,21 @@ public class Chapter {
 
     }
 
+    public void selectChocie() { // seçeneklerden bi tanesi seçilir ve main character'deki selectCharacter
+        // bir karaktere eşitlernir
+    }
 
+    public void characterAction() {
 
+    }
+
+    public void addZombieToPlace(ArrayList<Character> characterList) {
+        Random random = new Random();
+        int maxZombieNo = random.nextInt(4) + 3;
+        for (int i = 0;i<maxZombieNo;i++) {
+            characterList.add(zombie);
+        }
+    }
+
+    
 }

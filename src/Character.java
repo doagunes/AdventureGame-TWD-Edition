@@ -95,7 +95,4 @@ public abstract class Character {
     public void setBadQuote(String badQuote) {
         this.badQuote = badQuote;
     }
-    public void attack() {
-        System.out.println("Attacking");
-    }
 }
