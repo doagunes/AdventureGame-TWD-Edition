@@ -205,6 +205,9 @@ public class Chapter {
 
     }
     public void addCharactersToPlaces (ArrayList<Character> characterList) {
+
+        p12.getCharacters().add(glenn);
+        p13.getCharacters().add();
     }
 
 }
