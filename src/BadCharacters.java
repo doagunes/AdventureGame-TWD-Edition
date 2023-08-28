@@ -4,4 +4,5 @@ public class BadCharacters extends Character{
         super(name, inventory, power, criticalRate, defenseRate, goodQuote, badQuote);
         health = 200;
     }
+
 }

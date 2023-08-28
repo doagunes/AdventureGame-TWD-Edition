@@ -4,4 +4,11 @@ public class Zombie extends BadCharacters{
         super(name, inventory, power, criticalRate, defenseRate, goodQuote, badQuote);
         health = 100;
     }
+    public void attack() {
+        System.out.println("2)Attack to " + getName());
+    }
+    public void act () {
+        attack();
+    }
+
 }
