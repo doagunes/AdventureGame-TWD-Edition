@@ -1,4 +1,6 @@
+import javax.swing.plaf.IconUIResource;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Chapter {
     private int chapterNo;
@@ -22,6 +24,8 @@ public class Chapter {
     Inventory shaneInventory = new Inventory();
     Inventory loriInventory = new Inventory();
     Inventory zombieInventory = new Inventory();
+    Inventory glennInventory = new Inventory();
+    Inventory maggieInventory = new Inventory();
 
     Character rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
             (double) 1 /4, "Hello how is it going?", "nope, ı don't think so");
@@ -37,8 +41,13 @@ public class Chapter {
             (double) 1/20, "Okay daddy, love ya", "I am not a kid any more, okay!!");
     Character governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
             (double) 2/10, "", "I am not a kid any more, okay!!");
-    Character zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 4,
+    Character zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
             (double) 1 / 10, "whaaaaaaaa", "whaaaaaaaa");
+    Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
+            (double) 1/5, "Let'", "I ain’t no one’s b*tch");
+    Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
+            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
+
 
     private int missionIndex = 0;
     private int mission2Index = 0;
@@ -79,9 +88,6 @@ public class Chapter {
     Places p42 = new Places("Forest");
     Places p43 = new Places("Not Named"); // Todo: Get Named
     Places p44 = new Places("Not Named"); // Todo: Get Named
-
-
-
     public Chapter(int chapterNo) {
 
         switch (chapterNo){
@@ -116,6 +122,7 @@ public class Chapter {
                     places4.add(p42);
                     places4.add(p43);
                     places4.add(p44);
+                    break;
         }
 
     }
@@ -162,6 +169,35 @@ public class Chapter {
 
     }
 
+    public void selectChocie() { // seçeneklerden bi tanesi seçilir ve main character'deki selectCharacter
+        // bir karaktere eşitlernir
+    }
 
+    public void characterAction() {
+
+    }
+
+    public void addZombieToPlace(int chapterNo) {
+        Random random = new Random();
+        int maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+        ArrayList<Places> currentPlacesList = new ArrayList<>();
+        switch (chapterNo) {
+            case 1 -> currentPlacesList = places1;
+            case 2 -> currentPlacesList = places2;
+            case 3 -> currentPlacesList = places3;
+            case 4 -> currentPlacesList = places4;
+        }
+        for (int i = 0;i<currentPlacesList.size();i++) {
+            if (!currentPlacesList.get(i).getName().equals("Camp") && !currentPlacesList.get(i).getName().equals("Farm")
+                    && !currentPlacesList.get(i).getName().equals("Prison") && !currentPlacesList.get(i).getName().equals("WoodBury")) {
+                for (int j = 0;j<maxZombieNo;j++) {
+                    currentPlacesList.get(i).getCharacters().add(zombie);
+                }
+            }
+        }
+
+    }
+    public void addCharactersToPlaces (ArrayList<Character> characterList) {
+    }
 
 }
