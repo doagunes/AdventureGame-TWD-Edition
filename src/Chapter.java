@@ -66,6 +66,7 @@ public class Chapter {
 
      */
 
+
     Places p11 = new Places("Hospital");
     Places p12 = new Places("City Center");
     Places p13 = new Places("Camp");
@@ -81,11 +82,11 @@ public class Chapter {
     Places p43 = new Places("Not Named"); // Todo: Get Named
     Places p44 = new Places("Not Named"); // Todo: Get Named
 
-    
 
-    public Chapter(int no) {
 
-        switch (no){
+    public Chapter(int chapterNo) {
+
+        switch (chapterNo){
             case 1: missions1.add(m11);
                     missions1.add(m12);
                     missions1.add(m13);
