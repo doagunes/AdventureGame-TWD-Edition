@@ -73,6 +73,7 @@ public class Chapter {
 
      */
 
+
     Places p11 = new Places("Hospital");
     Places p12 = new Places("City Center");
     Places p13 = new Places("Camp");
@@ -87,8 +88,6 @@ public class Chapter {
     Places p42 = new Places("Forest");
     Places p43 = new Places("Not Named"); // Todo: Get Named
     Places p44 = new Places("Not Named"); // Todo: Get Named
-
-
     public Chapter(int chapterNo) {
 
         switch (chapterNo){
@@ -198,7 +197,6 @@ public class Chapter {
         }
 
     }
-
     public void addCharactersToPlaces (ArrayList<Character> characterList) {
     }
 
