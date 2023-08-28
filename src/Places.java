@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Places {
 
-    String name;
+    private String name;
     private ArrayList<Character> characters = new ArrayList<>();
 
     public Places(String name) {
