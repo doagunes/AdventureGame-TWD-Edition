@@ -4,6 +4,7 @@ public class Mission {
 
     private String name;
     private String description;
+    private Places place;
     private Character mustSelect;//doğru seçeneği belirlemek için oluşturuldu!!!
     boolean isCompleted;
 
@@ -12,6 +13,8 @@ public class Mission {
         this.description = description;
         this.mustSelect = mustSelect;
         this.isCompleted = false;
+
+
     }
 
     public Character getMustSelect() {

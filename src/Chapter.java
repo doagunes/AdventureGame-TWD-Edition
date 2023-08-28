@@ -177,6 +177,13 @@ public class Chapter {
 
     }
 
+
+    public void showSelections(){
+        for(int i=0;i<missions1.size();i++){
+            
+        }
+    }
+
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
         int maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
