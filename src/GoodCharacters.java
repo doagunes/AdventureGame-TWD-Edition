@@ -4,4 +4,10 @@ public class GoodCharacters extends Character{
         super(name, inventory, power, criticalRate, defenseRate, goodQuote, badQuote);
         health = 200;
     }
+    public void talk() {
+        System.out.println("1)Talk with " + getName());
+    }
+    public void act() {
+        talk();
+    }
 }
