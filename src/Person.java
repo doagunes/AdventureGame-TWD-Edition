@@ -5,10 +5,10 @@ public class Person extends BadCharacters{
     }
 
     public void act() {
-        System.out.print("1) ");
+        System.out.print(getCharacterNo());
         talk();
         System.out.println();
-        System.out.print("2) ");
+        System.out.print(getCharacterNo());
         attack();
     }
 }

@@ -5,7 +5,7 @@ public class GoodCharacters extends Character{
         health = 200;
     }
     public void act() {
-        System.out.print("1) ");
+        System.out.print(getCharacterNo());
         talk();
     }
 }
