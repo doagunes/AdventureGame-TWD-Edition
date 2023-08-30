@@ -208,7 +208,24 @@ public class Chapter {
     public void addCharactersToPlaces (ArrayList<Character> characterList) {
 
         p12.getCharacters().add(glenn);
-        p13.getCharacters().add();
+        p13.getCharacters().add(lori);
+        p13.getCharacters().add(carl);
+        p14.getCharacters().add(darly);
+        p21.getCharacters().add(shane);
+        p21.getCharacters().add(lori);
+        p22.getCharacters().add(maggie);
+        p22.getCharacters().add(glenn);
+        p22.getCharacters().add(carl);
+        p23.getCharacters().add(darly);
+        p23.getCharacters().add(shane);
+        p31.getCharacters().add(lori);
+        p32.getCharacters().add(governor);
+        p32.getCharacters().add(carl);
+        p33.getCharacters().add(darly);
+        p41.getCharacters().add(glenn);
+        p41.getCharacters().add(carl);
+        p42.getCharacters().add(darly);
+        
     }
 
 }
