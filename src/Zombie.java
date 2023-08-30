@@ -5,7 +5,7 @@ public class Zombie extends BadCharacters{
         health = 100;
     }
     public void act() {
-        System.out.print("1) ");
+        System.out.print(getCharacterNo() + ")");
         attack();
     }
 

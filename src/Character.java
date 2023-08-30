@@ -1,4 +1,5 @@
 public abstract class Character {
+    private int characterNo;
     String name;
     Inventory inventory;
     double health;
@@ -94,6 +95,14 @@ public abstract class Character {
 
     public void setBadQuote(String badQuote) {
         this.badQuote = badQuote;
+    }
+
+    public int getCharacterNo() {
+        return characterNo;
+    }
+
+    public void setCharacterNo(int characterNo) {
+        this.characterNo = characterNo;
     }
 
     public void talk() {

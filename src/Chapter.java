@@ -1,9 +1,12 @@
 import javax.swing.plaf.IconUIResource;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Chapter {
+    Scanner mySc = new Scanner(System.in);
     private int chapterNo;
+    private int selectionNo = 0;
 
     Mission mis = new Mission();
     ArrayList<Mission> missions1 = new ArrayList<>();
@@ -191,8 +194,15 @@ public class Chapter {
 
     }
 
-    public void selectChocie() { // seçeneklerden bi tanesi seçilir ve main character'deki selectCharacter
-        // bir karaktere eşitlernir
+    public void selection() {
+        System.out.println("please select what do you want.");
+        while (selectionNo != 0) {
+            try {
+                selectionNo = mySc.nextInt();
+            } catch (Exception exception) {
+                System.out.println("You have entered invalid character please try again!!");
+            }
+        }
     }
 
     public void characterAction() {
@@ -265,9 +275,27 @@ public class Chapter {
         }
 
     }
-    public void addCharactersToPlaces (ArrayList<Character> characterList) {
+    public void addCharactersToPlaces (int chapterNo) {
+        ArrayList<Mission> currentMissionList = new ArrayList<>();
+        switch (chapterNo) {
+            case 1:
+                currentMissionList = missions1;
+                break;
+            case 2:
+                currentMissionList = missions2;
+                break;
+            case 3:
+                currentMissionList = missions3;
+                break;
+            case 4:
+                currentMissionList = missions4;
+                break;
+        }
+
+        currentMissionList.
 
         m11.getPlace().getCharacters().add(glenn);
+        p12.getCharacters().add(glenn);
         p13.getCharacters().add(lori);
         p13.getCharacters().add(carl);
         p14.getCharacters().add(darly);
