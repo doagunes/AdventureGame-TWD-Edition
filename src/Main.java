@@ -15,7 +15,7 @@ public class Main {
          */
 
         cha.addZombieToPlace(1);
-       // cha.addCharactersToPlaces();
+        cha.addCharactersToPlaces();
         cha.showSelections(1);
 
     }
