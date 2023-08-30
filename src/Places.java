@@ -27,7 +27,7 @@ public class Places {
         this.characters = characters;
     }
     public void setCharactersNo () {
-        int counter = 1; // TODO: 30.08.2023 rearrange with a new name which make sense
+        int counter = 1; //
         for (int i = 0;i<characters.size();i++) {
             if (i != (characters.size()-1)) {
                 if (characters.get(i) != characters.get(i + 1)) {

@@ -106,10 +106,10 @@ public abstract class Character {
     }
 
     public void talk() {
-        System.out.print("Talk with " + getName());
+        System.out.print(getCharacterNo() + ") Talk with " + getName());
     }
     public void attack() {
-        System.out.print("Attack to " + getName());
+        System.out.print(getCharacterNo() + ") Attack to " + getName());
     }
 
     public abstract void act();
