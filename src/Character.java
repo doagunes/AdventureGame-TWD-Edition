@@ -102,4 +102,6 @@ public abstract class Character {
     public void attack() {
         System.out.print("Attack to " + getName());
     }
+
+    public abstract void act();
 }

@@ -5,4 +5,8 @@ public class BadCharacters extends Character{
         health = 200;
     }
 
+    @Override
+    public void act() {
+
+    }
 }

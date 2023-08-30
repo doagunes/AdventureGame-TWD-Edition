@@ -5,6 +5,7 @@ import java.util.Random;
 public class Chapter {
     private int chapterNo;
 
+    Mission mis = new Mission();
     ArrayList<Mission> missions1 = new ArrayList<>();
     ArrayList<Mission> missions2 = new ArrayList<>();
     ArrayList<Mission> missions3 = new ArrayList<>();
@@ -48,10 +49,21 @@ public class Chapter {
     Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
             (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
 
-
-    private int missionIndex = 0;
+    int missionIndex = 0;
     private int mission2Index = 0;
     private int mission3Index = 0;
+
+    public int getMissionIndex() {
+        return missionIndex;
+    }
+
+    public int getMission2Index() {
+        return mission2Index;
+    }
+
+    public int getMission3Index() {
+        return mission3Index;
+    }
 
     Mission m11 = new Mission("Escape from the hospital", "attack the zombies or run", zombie);
     Mission m12 = new Mission("Morgan", "Talk to Morgan", morgan);
@@ -127,11 +139,12 @@ public class Chapter {
 
     }
 
-    public void nextMission(){
+    public void nextMission(int chapterNo){
 
+        mis.isCompleted = false;
         if(chapterNo == 1){
-
-                if(missions1.get(missionIndex).isCompleted){
+                mis.isCompleted = true;
+                if(mis.isCompleted){
                     missionIndex++;
                 }
 
@@ -150,11 +163,11 @@ public class Chapter {
 
     }
 
-    public void showMission(){
+    public void showMission(int chapterNo){
         if(chapterNo == 1){
 
-            System.out.println(missions1.get(missionIndex).getName() + "\n" +
-                    missions1.get(missionIndex).getDescription());
+            System.out.println("Mission name: " + missions1.get(missionIndex).getName() + "\n" +
+                    "Mission Description: " + missions1.get(missionIndex).getDescription());
 
         } else if(chapterNo == 2){
             System.out.println(missions2.get(mission2Index).getName() + "\n" +
@@ -178,10 +191,42 @@ public class Chapter {
     }
 
 
-    public void showSelections(){
-        for(int i=0;i<places1.size();i++){
-            
+    public void showSelections(int no){
+        if(no == 1){
+            for(missionIndex=0;missionIndex<places1.size();){
+                showMission(no);
+                for(int j=0;j<places1.get(missionIndex).getCharacters().size();j++){
+                    places1.get(missionIndex).getCharacters().get(j).act();
+                    System.out.println("\n");
+                }
+                nextMission(no);
+            }
         }
+
+        if(no == 2){
+            for(int i=0;i<places2.size();i++){
+                for(int j=0;j<places2.get(i).getCharacters().size();j++){
+                    places2.get(i).getCharacters().get(j).act();
+                }
+            }
+        }
+
+        if(no == 3){
+            for(int i=0;i<places3.size();i++){
+                for(int j=0;j<places3.get(i).getCharacters().size();j++){
+                    places3.get(i).getCharacters().get(j).act();
+                }
+            }
+        }
+
+        if(no == 4){
+            for(int i=0;i<places4.size();i++){
+                for(int j=0;j<places4.get(i).getCharacters().size();j++){
+                    places4.get(i).getCharacters().get(j).act();
+                }
+            }
+        }
+
     }
 
     public void addZombieToPlace(int chapterNo) {
@@ -200,6 +245,7 @@ public class Chapter {
                 for (int j = 0;j<maxZombieNo;j++) {
                     currentPlacesList.get(i).getCharacters().add(zombie);
 
+
                 }
             }
         }
@@ -208,7 +254,7 @@ public class Chapter {
     public void addCharactersToPlaces (ArrayList<Character> characterList) {
 
         p12.getCharacters().add(glenn);
-        p13.getCharacters().add();
+
     }
 
 }

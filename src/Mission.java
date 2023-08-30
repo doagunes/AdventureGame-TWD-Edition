@@ -16,6 +16,10 @@ public class Mission {
 
 
     }
+    public Mission() {
+
+
+    }
 
     public Character getMustSelect() {
         return mustSelect;
