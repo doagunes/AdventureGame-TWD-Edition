@@ -283,7 +283,7 @@ public class Chapter {
         switch (chapterNo) {
             case 1:
                 currentPlaceList = places1;
-                m12.getPlace().getCharacters().add(glenn);
+                m12.getPlace().getCharacters().add(glenn); 
                 m13.getPlace().getCharacters().add(lori);
                 m13.getPlace().getCharacters().add(carl);
                 m14.getPlace().getCharacters().add(darly);
