@@ -318,9 +318,6 @@ public class Chapter {
                 System.out.println("Daha mission 4 objeleri oluşturulmadı onlar oluşturulunca case 4 tamamlanıcak");
                 break;
         }
-
-
-        
     }
 
 }
