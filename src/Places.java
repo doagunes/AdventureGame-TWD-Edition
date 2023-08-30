@@ -29,7 +29,7 @@ public class Places {
     public void setCharactersNo () {
         int counter = 1; //
         for (int i = 0;i<characters.size();i++) {
-            if (i != (characters.size()-1)) {
+            if (i != characters.size()-1) {
                 if (characters.get(i) != characters.get(i + 1)) {
                     selectionMap.put(characters.get(i), counter);
                     characters.get(i).setCharacterNo(counter);

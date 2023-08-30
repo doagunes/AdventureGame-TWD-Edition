@@ -84,20 +84,20 @@ public class Chapter {
     Places p44 = new Places("Not Named"); // Todo: Get Named
 
 
-    Mission m11 = new Mission("Escape from the hospital", "attack the zombies or run", zombie, p11);
-    Mission m12 = new Mission("Morgan", "Talk to Morgan", morgan, p12);
-    Mission m13 = new Mission("Center", "Escape from zombies", zombie, p13);
-    Mission m14 = new Mission("Camp", "Talk to Lori", lori, p14);
-    Mission m21 = new Mission("Highway", "Talk to Shane", shane, p21);
-    Mission m22 = new Mission("Forest", "Save Sofia and kill zombies", zombie, p22);
-    Mission m23 = new Mission("Farm", "Talk to Hershel", darly, p23); //darly yerine hershel gelecek
-    Mission m24 = new Mission("Forest", "Kill Zombies", zombie, p22);
-    Mission m25 = new Mission("Forest", "Kill Shane and escape from the farm", shane, p22);
-    Mission m31 = new Mission("Forest", "Talk to Darly", darly, p31);
-    Mission m32 = new Mission("Prison", "Talk with Carl", carl, p32);
-    Mission m33 = new Mission("Forest", "Kill zombies", zombie, p31);
-    Mission m34 = new Mission("WoodBury", "Save Glenn and Maggie", governor, p33);
-    Mission m35 = new Mission("Prison", "Battle with the governor and his crew", governor, p32);
+    Mission m11 = new Mission("Attack the zombies or run", zombie, p11);
+    Mission m12 = new Mission("Talk to Morgan", morgan, p12);
+    Mission m13 = new Mission("Escape from zombies", zombie, p13);
+    Mission m14 = new Mission("Talk to Lori", lori, p14);
+    Mission m21 = new Mission("Talk to Shane", shane, p21);
+    Mission m22 = new Mission("Save Sofia and kill zombies", zombie, p22);
+    Mission m23 = new Mission("Talk to Hershel", darly, p23); //darly yerine hershel gelecek
+    Mission m24 = new Mission("Kill Zombies", zombie, p22);
+    Mission m25 = new Mission("Kill Shane and escape from the farm", shane, p22);
+    Mission m31 = new Mission("Talk to Darly", darly, p31);
+    Mission m32 = new Mission("Talk with Carl", carl, p32);
+    Mission m33 = new Mission("Kill zombies", zombie, p31);
+    Mission m34 = new Mission("Save Glenn and Maggie", governor, p33);
+    Mission m35 = new Mission("Battle with the governor and his crew", governor, p32);
 
     /*
         Burada mission 4 objeleri oluşturulacak!!!!
@@ -168,9 +168,10 @@ public class Chapter {
 
         }else if(chapterNo == 3){
 
-                if(missions3.get(mission3Index).isCompleted){
-                    mission3Index++;
-                }
+            mis.isCompleted = true;
+            if(mis.isCompleted){
+                mission3Index++;
+            }
         }
 
     }
@@ -178,17 +179,17 @@ public class Chapter {
     public void showMission(int chapterNo){
         if(chapterNo == 1){
 
-            System.out.println("Mission name: " + missions1.get(missionIndex).getName() + "\n" +
-                    "Mission Description: " + missions1.get(missionIndex).getDescription());
+            System.out.println("Place Name: " + missions1.get(missionIndex).getPlace().getName() + "\n" +
+                    "Mission Description: " + missions1.get(missionIndex).getDescription() + "\n");
 
         } else if(chapterNo == 2){
-            System.out.println("Mission name: " + missions2.get(mission2Index).getName() + "\n" +
-                    "Mission Description: " + missions2.get(mission2Index).getDescription());
+            System.out.println("Place name: " + missions2.get(mission2Index).getPlace().getName() + "\n" +
+                    "Mission Description: " + missions2.get(mission2Index).getDescription() + "\n");
 
         }else if(chapterNo == 3){
 
-            System.out.println(missions3.get(mission3Index).getName() + "\n" +
-                    missions3.get(mission3Index).getDescription());
+            System.out.println("Place name: " + missions3.get(mission3Index).getPlace().getName() + "\n" +
+                    "Mission Description: " + missions3.get(mission3Index).getDescription() + "\n");
 
         }
 
@@ -215,8 +216,7 @@ public class Chapter {
             for(missionIndex=0;missionIndex<missions1.size();){
                 showMission(no);
                 for(int j=0;j<missions1.get(missionIndex).getPlace().getCharacters().size();j++){
-                    //Todo: Burayı düzenle
-                    places1.get(missionIndex).getCharacters().get(j).act();
+                    missions1.get(missionIndex).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
                 }
                 nextMission(no);
@@ -225,10 +225,10 @@ public class Chapter {
         }
 
         else if(no == 2){
-            for(mission2Index=0;mission2Index<places2.size();){
+            for(mission2Index=0;mission2Index<missions2.size();){
                 showMission(no);
-                for(int j=0;j<places2.get(mission2Index).getCharacters().size();j++){
-                    places2.get(mission2Index).getCharacters().get(j).act();
+                for(int j=0;j<missions2.get(mission2Index).getPlace().getCharacters().size();j++){
+                    missions2.get(mission2Index).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
 
                 }
@@ -237,20 +237,32 @@ public class Chapter {
         }
 
         else if(no == 3){
-            for(int i=0;i<places3.size();i++){
-                for(int j=0;j<places3.get(i).getCharacters().size();j++){
-                    places3.get(i).getCharacters().get(j).act();
+            for(mission3Index=0;mission3Index<missions3.size();){
+                showMission(no);
+                for(int j=0;j<missions3.get(mission3Index).getPlace().getCharacters().size();j++){
+                    missions3.get(mission3Index).getPlace().getCharacters().get(j).act();
+                    System.out.println("\n");
                 }
+                nextMission(no);
             }
         }
 
+
+        /*
+        Todo: Burası düzenlenecek
         else if(no == 4){
-            for(int i=0;i<places4.size();i++){
-                for(int j=0;j<places4.get(i).getCharacters().size();j++){
-                    places4.get(i).getCharacters().get(j).act();
+            for(mission2Index=0;mission2Index<missions2.size();){
+                showMission(no);
+                for(int j=0;j<missions2.get(mission2Index).getPlace().getCharacters().size();j++){
+                    missions2.get(mission2Index).getPlace().getCharacters().get(j).act();
+                    System.out.println("\n");
+
                 }
+                nextMission(no);
             }
         }
+
+         */
 
     }
 
@@ -283,10 +295,12 @@ public class Chapter {
         switch (chapterNo) {
             case 1:
                 currentPlaceList = places1;
-                m12.getPlace().getCharacters().add(glenn);
-                m13.getPlace().getCharacters().add(lori);
-                m13.getPlace().getCharacters().add(carl);
+                m12.getPlace().getCharacters().add(morgan);
+                m13.getPlace().getCharacters().add(glenn);
+                m14.getPlace().getCharacters().add(carl);
+                m14.getPlace().getCharacters().add(lori);
                 m14.getPlace().getCharacters().add(darly);
+                m14.getPlace().getCharacters().add(shane);
                 for (Places places : currentPlaceList) {
                     places.setCharactersNo();
                 }
@@ -295,21 +309,30 @@ public class Chapter {
                 currentPlaceList = places2;
                 m21.getPlace().getCharacters().add(shane);
                 m21.getPlace().getCharacters().add(lori);
-                m22.getPlace().getCharacters().add(maggie);
-                m22.getPlace().getCharacters().add(glenn);
-                m22.getPlace().getCharacters().add(carl);
+                m21.getPlace().getCharacters().add(darly);
+                m23.getPlace().getCharacters().add(maggie);
+                m23.getPlace().getCharacters().add(glenn);
+                m23.getPlace().getCharacters().add(carl);
                 m23.getPlace().getCharacters().add(darly);
                 m23.getPlace().getCharacters().add(shane);
+                m25.getPlace().getCharacters().add(shane);
                 for (Places places : currentPlaceList) {
                     places.setCharactersNo();
                 }
                 break;
             case 3:
                 currentPlaceList = places3;
-                m31.getPlace().getCharacters().add(lori);
-                m32.getPlace().getCharacters().add(governor);
+                m31.getPlace().getCharacters().add(darly);
                 m32.getPlace().getCharacters().add(carl);
+                m32.getPlace().getCharacters().add(maggie);
+                m32.getPlace().getCharacters().add(glenn);
+                m32.getPlace().getCharacters().add(lori);
                 m33.getPlace().getCharacters().add(darly);
+                m34.getPlace().getCharacters().add(governor);
+                m34.getPlace().getCharacters().add(maggie);
+                m34.getPlace().getCharacters().add(glenn);
+                m34.getPlace().getCharacters().add(darly);
+                m35.getPlace().getCharacters().add(governor);
                 for (Places places : currentPlaceList) {
                     places.setCharactersNo();
                 }
