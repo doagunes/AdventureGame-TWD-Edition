@@ -179,7 +179,7 @@ public class Chapter {
 
 
     public void showSelections(){
-        for(int i=0;i<missions1.size();i++){
+        for(int i=0;i<places1.size();i++){
             
         }
     }
@@ -199,6 +199,7 @@ public class Chapter {
                     && !currentPlacesList.get(i).getName().equals("Prison") && !currentPlacesList.get(i).getName().equals("WoodBury")) {
                 for (int j = 0;j<maxZombieNo;j++) {
                     currentPlacesList.get(i).getCharacters().add(zombie);
+
                 }
             }
         }
