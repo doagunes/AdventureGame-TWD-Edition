@@ -35,6 +35,10 @@ public class Places {
                     characters.get(i).setCharacterNo(counter);
                     counter++;
                 }
+            } else {
+                selectionMap.put(characters.get(i), counter);
+                characters.get(i).setCharacterNo(counter);
+                counter++;
             }
         }
     }

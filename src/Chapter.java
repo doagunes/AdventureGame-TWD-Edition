@@ -342,5 +342,8 @@ public class Chapter {
                 break;
         }
     }
+    public void addOneMoreBadPerson() {
+
+    }
 
 }

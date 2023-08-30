@@ -18,6 +18,9 @@ public class Main {
 
         
         cha.addCharactersToPlaces(1);
+
+    
+        
         cha.showSelections(1);
         System.out.println("***************");
         cha2.addCharactersToPlaces(2);
@@ -29,9 +32,7 @@ public class Main {
 
         /*
         System.out.println(mis.isCompleted);
-        cha2.addZombieToPlace(2);
-       // cha.addCharactersToPlaces();
-        cha2.showSelections(2);
+
 
         /*
         for(int i=0;i<cha.missions2.size();i++){
