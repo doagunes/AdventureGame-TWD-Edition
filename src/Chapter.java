@@ -277,7 +277,11 @@ public class Chapter {
     }
     public void addCharactersToPlaces (int chapterNo) {
         addZombieToPlace(chapterNo);
+<<<<<<< Updated upstream
         ArrayList<Places> currentPlaceList = new ArrayList<>();
+=======
+        ArrayList<Mission> currentMissionList = new ArrayList<>();
+>>>>>>> Stashed changes
         switch (chapterNo) {
             case 1:
                 currentPlaceList = places1;
@@ -316,6 +320,30 @@ public class Chapter {
                 System.out.println("Daha mission 4 objeleri oluşturulmadı onlar oluşturulunca case 4 tamamlanıcak");
                 break;
         }
+<<<<<<< Updated upstream
+=======
+
+        p12.getCharacters().add(glenn);
+        p13.getCharacters().add(lori);
+        p13.getCharacters().add(carl);
+        p14.getCharacters().add(darly);
+        p21.getCharacters().add(shane);
+        p21.getCharacters().add(lori);
+        p22.getCharacters().add(maggie);
+        p22.getCharacters().add(glenn);
+        p22.getCharacters().add(carl);
+        p23.getCharacters().add(darly);
+        p23.getCharacters().add(shane);
+        p31.getCharacters().add(lori);
+        p32.getCharacters().add(governor);
+        p32.getCharacters().add(carl);
+        p33.getCharacters().add(darly);
+        p41.getCharacters().add(glenn);
+        p41.getCharacters().add(carl);
+        p42.getCharacters().add(darly);
+
+        
+>>>>>>> Stashed changes
         
     }
 
