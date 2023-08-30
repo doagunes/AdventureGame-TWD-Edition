@@ -212,9 +212,10 @@ public class Chapter {
 
     public void showSelections(int no){
         if(no == 1){
-            for(missionIndex=0;missionIndex<places1.size();){
+            for(missionIndex=0;missionIndex<missions1.size();){
                 showMission(no);
-                for(int j=0;j<places1.get(missionIndex).getCharacters().size();j++){
+                for(int j=0;j<missions1.get(missionIndex).getPlace().getCharacters().size();j++){
+                    //Todo: Burayı düzenle
                     places1.get(missionIndex).getCharacters().get(j).act();
                     System.out.println("\n");
                 }
@@ -317,9 +318,6 @@ public class Chapter {
                 System.out.println("Daha mission 4 objeleri oluşturulmadı onlar oluşturulunca case 4 tamamlanıcak");
                 break;
         }
-
-
-
     }
 
 }
