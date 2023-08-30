@@ -14,6 +14,7 @@ public class Mission {
         this.description = description;
         this.mustSelect = mustSelect;
         this.isCompleted = false;
+        this.place = place;
 
 
     }
@@ -36,6 +37,22 @@ public class Mission {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setPlace(Places place) {
+        this.place = place;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setMustSelect(Character mustSelect) {
+        this.mustSelect = mustSelect;
     }
 
     public boolean isCompleted() {
