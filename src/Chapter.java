@@ -65,20 +65,36 @@ public class Chapter {
         return mission3Index;
     }
 
-    Mission m11 = new Mission("Escape from the hospital", "attack the zombies or run", zombie);
-    Mission m12 = new Mission("Morgan", "Talk to Morgan", morgan);
-    Mission m13 = new Mission("Center", "Escape from zombies", zombie);
-    Mission m14 = new Mission("Camp", "Talk to Lori", lori);
-    Mission m21 = new Mission("Highway", "Talk to Shane", shane);
-    Mission m22 = new Mission("Forest", "Save Sofia and kill zombies", zombie);
-    Mission m23 = new Mission("Farm", "Talk to Hershel", darly); //darly yerine hershel gelecek
-    Mission m24 = new Mission("Forest", "Kill Zombies", zombie);
-    Mission m25 = new Mission("Forest", "Kill Shane and escape from the farm", shane);
-    Mission m31 = new Mission("Forest", "Talk to Darly", darly);
-    Mission m32 = new Mission("Prison", "Talk with Carl", carl);
-    Mission m33 = new Mission("Forest", "Kill zombies", zombie);
-    Mission m34 = new Mission("WoodBury", "Save Glenn and Maggie", governor);
-    Mission m35 = new Mission("Prison", "Battle with the governor and his crew", governor);
+    Places p11 = new Places("Hospital");
+    Places p12 = new Places("Neighbourhood");
+    Places p13 = new Places("City Center");
+    Places p14 = new Places("Camp");
+    Places p21 = new Places("Highway");
+    Places p22 = new Places("Forest");
+    Places p23 = new Places("Farm");
+    Places p31 = new Places("Forest");
+    Places p32 = new Places("Prison");
+    Places p33 = new Places("WoodBury");
+    Places p41 = new Places("Prison");
+    Places p42 = new Places("Forest");
+    Places p43 = new Places("Not Named"); // Todo: Get Named
+    Places p44 = new Places("Not Named"); // Todo: Get Named
+
+
+    Mission m11 = new Mission("Escape from the hospital", "attack the zombies or run", zombie, p11);
+    Mission m12 = new Mission("Morgan", "Talk to Morgan", morgan, p12);
+    Mission m13 = new Mission("Center", "Escape from zombies", zombie, p13);
+    Mission m14 = new Mission("Camp", "Talk to Lori", lori, p14);
+    Mission m21 = new Mission("Highway", "Talk to Shane", shane, p21);
+    Mission m22 = new Mission("Forest", "Save Sofia and kill zombies", zombie, p22);
+    Mission m23 = new Mission("Farm", "Talk to Hershel", darly, p23); //darly yerine hershel gelecek
+    Mission m24 = new Mission("Forest", "Kill Zombies", zombie, p22);
+    Mission m25 = new Mission("Forest", "Kill Shane and escape from the farm", shane, p22);
+    Mission m31 = new Mission("Forest", "Talk to Darly", darly, p31);
+    Mission m32 = new Mission("Prison", "Talk with Carl", carl, p32);
+    Mission m33 = new Mission("Forest", "Kill zombies", zombie, p31);
+    Mission m34 = new Mission("WoodBury", "Save Glenn and Maggie", governor, p33);
+    Mission m35 = new Mission("Prison", "Battle with the governor and his crew", governor, p32);
 
     /*
         Burada mission 4 objeleri oluşturulacak!!!!
@@ -86,22 +102,11 @@ public class Chapter {
      */
 
 
-    Places p11 = new Places("Hospital");
-    Places p12 = new Places("City Center");
-    Places p13 = new Places("Camp");
-    Places p14 = new Places("Forest");
-    Places p21 = new Places("Highway");
-    Places p22 = new Places("Farm");
-    Places p23 = new Places("Forest");
-    Places p31 = new Places("Prison");
-    Places p32 = new Places("WoodBury");
-    Places p33 = new Places("Forest");
-    Places p41 = new Places("Prison");
-    Places p42 = new Places("Forest");
-    Places p43 = new Places("Not Named"); // Todo: Get Named
-    Places p44 = new Places("Not Named"); // Todo: Get Named
-    public Chapter(int chapterNo) {
 
+    public Chapter(int chapterNo) {
+/*
+ switch-case'te break'ler silindi çünkü diğer arraylistlere ekleme yapamadı sadece 1'e yaptı
+ */
         switch (chapterNo){
             case 1: missions1.add(m11);
                     missions1.add(m12);
@@ -112,6 +117,7 @@ public class Chapter {
                     places1.add(p13);
                     places1.add(p14);
                     break;
+
             case 2: missions2.add(m21);
                     missions2.add(m22);
                     missions2.add(m23);
@@ -120,7 +126,8 @@ public class Chapter {
                     places2.add(p21);
                     places2.add(p22);
                     places2.add(p23);
-                    break;
+                break;
+
             case 3: missions3.add(m31);
                     missions3.add(m32);
                     missions3.add(m33);
@@ -129,12 +136,14 @@ public class Chapter {
                     places3.add(p31);
                     places3.add(p32);
                     places3.add(p33);
-                    break;
+                break;
+
             case 4: places4.add(p41);
                     places4.add(p42);
                     places4.add(p43);
                     places4.add(p44);
-                    break;
+                break;
+
         }
 
     }
@@ -149,8 +158,8 @@ public class Chapter {
                 }
 
         } else if(chapterNo == 2){
-
-                if(missions2.get(mission2Index).isCompleted){
+            mis.isCompleted = true;
+            if(mis.isCompleted){
                     mission2Index++;
                 }
 
@@ -170,8 +179,8 @@ public class Chapter {
                     "Mission Description: " + missions1.get(missionIndex).getDescription());
 
         } else if(chapterNo == 2){
-            System.out.println(missions2.get(mission2Index).getName() + "\n" +
-                    missions2.get(mission2Index).getDescription());
+            System.out.println("Mission name: " + missions2.get(mission2Index).getName() + "\n" +
+                    "Mission Description: " + missions2.get(mission2Index).getDescription());
 
         }else if(chapterNo == 3){
 
@@ -200,18 +209,23 @@ public class Chapter {
                     System.out.println("\n");
                 }
                 nextMission(no);
+
             }
         }
 
-        if(no == 2){
-            for(int i=0;i<places2.size();i++){
-                for(int j=0;j<places2.get(i).getCharacters().size();j++){
-                    places2.get(i).getCharacters().get(j).act();
+        else if(no == 2){
+            for(mission2Index=0;mission2Index<places2.size();){
+                showMission(no);
+                for(int j=0;j<places2.get(mission2Index).getCharacters().size();j++){
+                    places2.get(mission2Index).getCharacters().get(j).act();
+                    System.out.println("\n");
+
                 }
+                nextMission(no);
             }
         }
 
-        if(no == 3){
+        else if(no == 3){
             for(int i=0;i<places3.size();i++){
                 for(int j=0;j<places3.get(i).getCharacters().size();j++){
                     places3.get(i).getCharacters().get(j).act();
@@ -219,7 +233,7 @@ public class Chapter {
             }
         }
 
-        if(no == 4){
+        else if(no == 4){
             for(int i=0;i<places4.size();i++){
                 for(int j=0;j<places4.get(i).getCharacters().size();j++){
                     places4.get(i).getCharacters().get(j).act();
@@ -253,8 +267,7 @@ public class Chapter {
     }
     public void addCharactersToPlaces (ArrayList<Character> characterList) {
 
-        p12.getCharacters().add(glenn);
-
+        m11.getPlace().getCharacters().add(glenn);
         p13.getCharacters().add(lori);
         p13.getCharacters().add(carl);
         p14.getCharacters().add(darly);

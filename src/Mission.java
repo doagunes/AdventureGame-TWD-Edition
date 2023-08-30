@@ -2,13 +2,14 @@ import java.util.ArrayList;
 
 public class Mission {
 
+
     private String name;
     private String description;
     private Places place;
     private Character mustSelect;//doğru seçeneği belirlemek için oluşturuldu!!!
     boolean isCompleted;
 
-    public Mission(String name, String description, Character mustSelect) {
+    public Mission(String name, String description, Character mustSelect, Places place) {
         this.name = name;
         this.description = description;
         this.mustSelect = mustSelect;
@@ -19,6 +20,10 @@ public class Mission {
     public Mission() {
 
 
+    }
+
+    public Places getPlace() {
+        return place;
     }
 
     public Character getMustSelect() {
