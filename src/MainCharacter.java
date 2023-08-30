@@ -5,4 +5,9 @@ public class MainCharacter extends Character{
         super(name, inventory, power, criticalRate, defenseRate, goodQuote, badQuote);
         health = 300;
     }
+
+    @Override
+    public void act() {
+
+    }
 }
