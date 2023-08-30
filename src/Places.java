@@ -5,11 +5,9 @@ public class Places {
 
     private String name;
     private ArrayList<Character> characters = new ArrayList<>();
-    private HashMap<Integer, Character> selectionMap = new HashMap<>();
+    private HashMap<Character, Integer> selectionMap = new HashMap<>();
 
-    public Places(String name) { // setCharactersNo methodu dogru calışmıyo cunku constructor cagırırken yani obje oluşturuken +
-        // daha characters arraylistine charakterler eklenmemiş durumda bu yuzden setCharacteresNo methodundaki for calışamıyor !!!
-        // TODO: 30.08.2023 bu hatayı çöz
+    public Places(String name) {
         this.name = name;
     }
 
@@ -29,8 +27,23 @@ public class Places {
         this.characters = characters;
     }
     public void setCharactersNo () {
-        for (int i = 1;i<=characters.size();i++) {
-            selectionMap.put(i, characters.get(i));
+        int counter = 1; // TODO: 30.08.2023 rearrange with a new name which make sense
+        for (int i = 0;i<characters.size();i++) {
+            if (i != (characters.size()-1)) {
+                if (characters.get(i) != characters.get(i + 1)) {
+                    selectionMap.put(characters.get(i), counter);
+                    characters.get(i).setCharacterNo(counter);
+                    counter++;
+                }
+            }
         }
+    }
+
+    public HashMap<Character, Integer> getSelectionMap() {
+        return selectionMap;
+    }
+
+    public void setSelectionMap(HashMap<Character, Integer> selectionMap) {
+        this.selectionMap = selectionMap;
     }
 }

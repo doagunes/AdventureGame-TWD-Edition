@@ -277,24 +277,53 @@ public class Chapter {
 
     }
     public void addCharactersToPlaces (int chapterNo) {
+        addZombieToPlace(chapterNo);
+        ArrayList<Places> currentPlaceList = new ArrayList<>();
         ArrayList<Mission> currentMissionList = new ArrayList<>();
         switch (chapterNo) {
             case 1:
-                currentMissionList = missions1;
+                currentPlaceList = places1;
+                m12.getPlace().getCharacters().add(glenn);
+                m13.getPlace().getCharacters().add(lori);
+                m13.getPlace().getCharacters().add(carl);
+                m14.getPlace().getCharacters().add(darly);
+                for (Places places : currentPlaceList) {
+                    places.setCharactersNo();
+                }
                 break;
             case 2:
-                currentMissionList = missions2;
+                currentPlaceList = places2;
+                m21.getPlace().getCharacters().add(shane);
+                m21.getPlace().getCharacters().add(lori);
+                m22.getPlace().getCharacters().add(maggie);
+                m22.getPlace().getCharacters().add(glenn);
+                m22.getPlace().getCharacters().add(carl);
+                m23.getPlace().getCharacters().add(darly);
+                m23.getPlace().getCharacters().add(shane);
+                for (Places places : currentPlaceList) {
+                    places.setCharactersNo();
+                }
                 break;
             case 3:
-                currentMissionList = missions3;
+                currentPlaceList = places3;
+                m31.getPlace().getCharacters().add(lori);
+                m32.getPlace().getCharacters().add(governor);
+                m32.getPlace().getCharacters().add(carl);
+                m33.getPlace().getCharacters().add(darly);
+                for (Places places : currentPlaceList) {
+                    places.setCharactersNo();
+                }
                 break;
             case 4:
-                currentMissionList = missions4;
+                System.out.println("Daha mission 4 objeleri oluşturulmadı onlar oluşturulunca case 4 tamamlanıcak");
                 break;
         }
 
 
+
+
         m11.getPlace().getCharacters().add(glenn);
+
         p12.getCharacters().add(glenn);
         p13.getCharacters().add(lori);
         p13.getCharacters().add(carl);
@@ -313,6 +342,9 @@ public class Chapter {
         p41.getCharacters().add(glenn);
         p41.getCharacters().add(carl);
         p42.getCharacters().add(darly);
+
+        
+
         
     }
 

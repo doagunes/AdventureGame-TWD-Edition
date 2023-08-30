@@ -16,8 +16,13 @@ public class Main {
          */
 
         System.out.println(mis.isCompleted);
+
         cha.addZombieToPlace(1);
        // cha.addCharactersToPlaces();
+        cha.addCharactersToPlaces(1);
+        //cha.addZombieToPlace(1);
+        //cha.addCharactersToPlaces();
+        //cha.addCharactersToPlaces();
         cha.showSelections(1);
         System.out.println(mis.isCompleted);
         cha2.addZombieToPlace(2);
