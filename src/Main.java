@@ -18,9 +18,6 @@ public class Main {
 
         
         cha.addCharactersToPlaces(1);
-
-    
-        
         cha.showSelections(1);
         System.out.println("***************");
         cha2.addCharactersToPlaces(2);

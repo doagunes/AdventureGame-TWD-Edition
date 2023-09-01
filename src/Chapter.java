@@ -51,6 +51,12 @@ public class Chapter {
             (double) 1/5, "Let'", "I ain’t no one’s b*tch");
     Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
             (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
+    Character hershel = new GoodCharacters("Hershel Greene", maggieInventory, 22, (double) 7/9,
+            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
+    Character carol = new GoodCharacters("Carol", maggieInventory, 22, (double) 7/9,
+            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
+    Character michonne = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
+            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
 
     int missionIndex = 0;
     private int mission2Index = 0;
@@ -75,9 +81,13 @@ public class Chapter {
     Places p21 = new Places("Highway");
     Places p22 = new Places("Forest");
     Places p23 = new Places("Farm");
+    Places p24 = new Places("Forest");
+    Places p25 = new Places("Forest");
     Places p31 = new Places("Forest");
     Places p32 = new Places("Prison");
     Places p33 = new Places("WoodBury");
+    Places p34 = new Places("Forest");
+    Places p35 = new Places("Prison");
     Places p41 = new Places("Prison");
     Places p42 = new Places("Forest");
     Places p43 = new Places("Not Named"); // Todo: Get Named
@@ -88,16 +98,16 @@ public class Chapter {
     Mission m12 = new Mission("Talk to Morgan", morgan, p12);
     Mission m13 = new Mission("Escape from zombies", zombie, p13);
     Mission m14 = new Mission("Talk to Lori", lori, p14);
-    Mission m21 = new Mission("Talk to Shane", shane, p21);
+    Mission m21 = new Mission("Talk to Carol", carol, p21);
     Mission m22 = new Mission("Save Sofia and kill zombies", zombie, p22);
-    Mission m23 = new Mission("Talk to Hershel", darly, p23); //darly yerine hershel gelecek
-    Mission m24 = new Mission("Kill Zombies", zombie, p22);
-    Mission m25 = new Mission("Kill Shane and escape from the farm", shane, p22);
+    Mission m23 = new Mission("Talk to Hershel", hershel, p23); //darly yerine hershel gelecek
+    Mission m24 = new Mission("Kill Zombies", zombie, p24);
+    Mission m25 = new Mission("Kill Shane and escape from the farm", shane, p25);
     Mission m31 = new Mission("Talk to Darly", darly, p31);
     Mission m32 = new Mission("Talk with Carl", carl, p32);
-    Mission m33 = new Mission("Kill zombies", zombie, p31);
-    Mission m34 = new Mission("Save Glenn and Maggie", governor, p33);
-    Mission m35 = new Mission("Battle with the governor and his crew", governor, p32);
+    Mission m33 = new Mission("Save Glenn and Maggie", governor, p33);
+    Mission m34 = new Mission("Kill zombies", zombie, p34);
+    Mission m35 = new Mission("Battle with the governor and his crew", governor, p35);
 
     /*
         Burada mission 4 objeleri oluşturulacak!!!!
@@ -129,6 +139,8 @@ public class Chapter {
                     places2.add(p21);
                     places2.add(p22);
                     places2.add(p23);
+                    places2.add(p24);
+                    places2.add(p25);
                 break;
 
             case 3: missions3.add(m31);
@@ -139,6 +151,8 @@ public class Chapter {
                     places3.add(p31);
                     places3.add(p32);
                     places3.add(p33);
+                    places3.add(p34);
+                    places3.add(p35);
                 break;
 
             case 4: places4.add(p41);
@@ -155,7 +169,7 @@ public class Chapter {
 
         mis.isCompleted = false;
         if(chapterNo == 1){
-                mis.isCompleted = true;
+                mis.isCompleted = true; //Method oluşturduğumuzda buraya method gelecek her zaman true olmayacak
                 if(mis.isCompleted){
                     missionIndex++;
                 }
@@ -290,8 +304,7 @@ public class Chapter {
     }
     public void addCharactersToPlaces (int chapterNo) {
         addZombieToPlace(chapterNo);
-        ArrayList<Places> currentPlaceList = new ArrayList<>();
-        ArrayList<Mission> currentMissionList = new ArrayList<>();
+        ArrayList<Places> currentPlaceList;
         switch (chapterNo) {
             case 1:
                 currentPlaceList = places1;
@@ -307,9 +320,11 @@ public class Chapter {
                 break;
             case 2:
                 currentPlaceList = places2;
+                m21.getPlace().getCharacters().add(carol);
                 m21.getPlace().getCharacters().add(shane);
                 m21.getPlace().getCharacters().add(lori);
                 m21.getPlace().getCharacters().add(darly);
+                m23.getPlace().getCharacters().add(hershel);
                 m23.getPlace().getCharacters().add(maggie);
                 m23.getPlace().getCharacters().add(glenn);
                 m23.getPlace().getCharacters().add(carl);
@@ -327,12 +342,17 @@ public class Chapter {
                 m32.getPlace().getCharacters().add(maggie);
                 m32.getPlace().getCharacters().add(glenn);
                 m32.getPlace().getCharacters().add(lori);
-                m33.getPlace().getCharacters().add(darly);
-                m34.getPlace().getCharacters().add(governor);
-                m34.getPlace().getCharacters().add(maggie);
-                m34.getPlace().getCharacters().add(glenn);
+                m33.getPlace().getCharacters().add(governor);
+                m33.getPlace().getCharacters().add(maggie);
+                m33.getPlace().getCharacters().add(glenn);
                 m34.getPlace().getCharacters().add(darly);
                 m35.getPlace().getCharacters().add(governor);
+                m35.getPlace().getCharacters().add(darly);
+                m35.getPlace().getCharacters().add(carol);
+                m35.getPlace().getCharacters().add(carl);
+                m35.getPlace().getCharacters().add(maggie);
+                m35.getPlace().getCharacters().add(glenn);
+                m35.getPlace().getCharacters().add(hershel);
                 for (Places places : currentPlaceList) {
                     places.setCharactersNo();
                 }
