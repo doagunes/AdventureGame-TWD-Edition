@@ -35,7 +35,7 @@ public class Chapter {
     Inventory michonneInventory = new Inventory();
 
 
-    Character rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
+    MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
             (double) 1 /4, "Hello how is it going?", "nope, ı don't think so");
     Character darly = new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
             (double) 1/5, "Let's go man", "I ain’t no one’s b*tch");
@@ -213,11 +213,11 @@ public class Chapter {
 
     }
 
-    public int selection() {
-        selectionNo = 0;
-        System.out.println("please select what do you want.");
-        while (selectionNo != 0) {
+    public int selection(int maxLimit) {
+        selectionNo = -1;
+        while (selectionNo <= 0 || selectionNo > maxLimit) {
             try {
+                System.out.println("please select what do you want.");
                 selectionNo = mySc.nextInt();
             } catch (Exception exception) {
                 System.out.println("You have entered invalid character please try again!!");
@@ -226,8 +226,9 @@ public class Chapter {
         return selectionNo;
     }
 
-    public void assignTheSelection() {
-
+    public void assignTheSelection(Places place, int maxLimit) {
+        int selectedNo = selection(maxLimit);
+        rick.setSelectCharacter(place.getSelectionMap().get(selectedNo));
     }
 
 
@@ -240,6 +241,8 @@ public class Chapter {
                     missions1.get(missionIndex).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
                 }
+                assignTheSelection(missions1.get(missionIndex).getPlace(), missions1.get(missionIndex).getPlace().
+                        getCharacters().get(missions1.get(missionIndex).getPlace().getCharacters().size()-1).getCharacterNo());
                 nextMission(no);
 
             }

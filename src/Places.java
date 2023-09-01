@@ -5,7 +5,7 @@ public class Places {
 
     private String name;
     private ArrayList<Character> characters = new ArrayList<>();
-    private HashMap<Character, Integer> selectionMap = new HashMap<>();
+    private HashMap<Integer, Character> selectionMap = new HashMap<>();
 
     public Places(String name) {
         this.name = name;
@@ -31,23 +31,23 @@ public class Places {
         for (int i = 0;i<characters.size();i++) {
             if (i != characters.size()-1) {
                 if (characters.get(i) != characters.get(i + 1)) {
-                    selectionMap.put(characters.get(i), counter);
+                    selectionMap.put(counter, characters.get(i));
                     characters.get(i).setCharacterNo(counter);
                     counter++;
                 }
             } else {
-                selectionMap.put(characters.get(i), counter);
+                selectionMap.put(counter, characters.get(i));
                 characters.get(i).setCharacterNo(counter);
                 counter++;
             }
         }
     }
 
-    public HashMap<Character, Integer> getSelectionMap() {
+    public HashMap<Integer, Character> getSelectionMap() {
         return selectionMap;
     }
 
-    public void setSelectionMap(HashMap<Character, Integer> selectionMap) {
+    public void setSelectionMap(HashMap<Integer, Character> selectionMap) {
         this.selectionMap = selectionMap;
     }
 }
