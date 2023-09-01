@@ -1,18 +1,17 @@
-import java.util.ArrayList;
-
 public class Mission {
 
 
     private String description;
     private Places place;
     private Character mustSelect;//doğru seçeneği belirlemek için oluşturuldu!!!
-    boolean isCompleted;
+
+    boolean isMissionCompleted;
 
     public Mission(String description, Character mustSelect, Places place) {
 
         this.description = description;
         this.mustSelect = mustSelect;
-        this.isCompleted = false;
+        this.isMissionCompleted = false;
         this.place = place;
 
 
@@ -21,6 +20,15 @@ public class Mission {
 
 
     }
+
+   public void isMissionCompleted(MainCharacter rick){
+        isMissionCompleted = false;
+        if(rick.getSelectCharacter() == mustSelect){
+            isMissionCompleted = true;
+        }else{
+            isMissionCompleted = false;
+        }
+   }
 
     public Places getPlace() {
         return place;
@@ -47,8 +55,8 @@ public class Mission {
         this.mustSelect = mustSelect;
     }
 
-    public boolean isCompleted() {
-        return isCompleted;
+    public boolean isMissionCompleted() {
+        return isMissionCompleted;
     }
 
 }

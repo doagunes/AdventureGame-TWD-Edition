@@ -1,4 +1,3 @@
-import javax.swing.plaf.IconUIResource;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -33,6 +32,8 @@ public class Chapter {
     Inventory hershelInventory = new Inventory();
     Inventory carolInventory = new Inventory();
     Inventory michonneInventory = new Inventory();
+
+
 
 
     MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
@@ -171,23 +172,22 @@ public class Chapter {
 
     public void nextMission(int chapterNo){
 
-        mis.isCompleted = false;
         if(chapterNo == 1){
-                mis.isCompleted = true; //Method oluşturduğumuzda buraya method gelecek her zaman true olmayacak
-                if(mis.isCompleted){
+                m11.isMissionCompleted(rick);//Method oluşturduğumuzda buraya method gelecek her zaman true olmayacak
+                if(m11.isMissionCompleted){
                     missionIndex++;
                 }
 
         } else if(chapterNo == 2){
-            mis.isCompleted = true;
-            if(mis.isCompleted){
+            mis.isMissionCompleted = true;
+            if(mis.isMissionCompleted){
                     mission2Index++;
                 }
 
         }else if(chapterNo == 3){
 
-            mis.isCompleted = true;
-            if(mis.isCompleted){
+            mis.isMissionCompleted = true;
+            if(mis.isMissionCompleted){
                 mission3Index++;
             }
         }
@@ -230,6 +230,8 @@ public class Chapter {
         int selectedNo = selection(maxLimit);
         rick.setSelectCharacter(place.getSelectionMap().get(selectedNo));
     }
+
+
 
 
     public void showSelections(int no){
@@ -318,6 +320,7 @@ public class Chapter {
         addZombieToPlace(chapterNo);
         switch (chapterNo) {
             case 1:
+
                 m12.getPlace().getCharacters().add(morgan);
                 m13.getPlace().getCharacters().add(glenn);
                 m14.getPlace().getCharacters().add(carl);
