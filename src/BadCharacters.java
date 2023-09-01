@@ -7,6 +7,5 @@ public class BadCharacters extends Character{
 
     @Override
     public void act() {
-
     }
 }

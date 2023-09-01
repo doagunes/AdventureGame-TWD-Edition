@@ -34,8 +34,6 @@ public class Chapter {
     Inventory michonneInventory = new Inventory();
 
 
-
-
     MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
             (double) 1 /4, "Hello how is it going?", "nope, ı don't think so");
     Character darly = new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
@@ -368,4 +366,6 @@ public class Chapter {
 
     }
 
+
+public class Chapter {
 }

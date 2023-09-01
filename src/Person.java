@@ -7,4 +7,5 @@ public class Person extends BadCharacters{
     public void act() {
         attack();
     }
+
 }

@@ -50,4 +50,5 @@ public class Places {
     public void setSelectionMap(HashMap<Integer, Character> selectionMap) {
         this.selectionMap = selectionMap;
     }
+public class Places {
 }

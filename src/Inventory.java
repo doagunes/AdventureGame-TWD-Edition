@@ -55,4 +55,5 @@ public class Inventory {
     public void setExtraMagazine(int extraMagazine) {
         this.extraMagazine = extraMagazine;
     }
+
 }

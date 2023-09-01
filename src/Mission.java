@@ -1,6 +1,5 @@
 public class Mission {
 
-
     private String description;
     private Places place;
     private Character mustSelect;//doğru seçeneği belirlemek için oluşturuldu!!!
