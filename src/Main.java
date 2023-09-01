@@ -20,11 +20,15 @@ public class Main {
         cha.addCharactersToPlaces(1);
         cha.showSelections(1);
         System.out.println("***************");
+
         cha2.addCharactersToPlaces(2);
         cha2.showSelections(2);
+
         System.out.println("***************");
         cha3.addCharactersToPlaces(3);
         cha3.showSelections(3);
+
+
 
 
         /*
