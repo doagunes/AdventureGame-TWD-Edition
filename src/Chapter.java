@@ -30,13 +30,17 @@ public class Chapter {
     Inventory zombieInventory = new Inventory();
     Inventory glennInventory = new Inventory();
     Inventory maggieInventory = new Inventory();
+    Inventory hershelInventory = new Inventory();
+    Inventory carolInventory = new Inventory();
+    Inventory michonneInventory = new Inventory();
+
 
     Character rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
             (double) 1 /4, "Hello how is it going?", "nope, ı don't think so");
-    Character darly = new GoodCharacters("Darly Dixon", darlyInventory, 40, (double) 2/3,
+    Character darly = new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
             (double) 1/5, "Let's go man", "I ain’t no one’s b*tch");
     Character morgan = new GoodCharacters("Morgan", morganInventory, 22, (double) 7/9,
-            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
+            (double) 2/5, "We’re not doing careful. We’re doing right", "This world... we're always on our own.");
     Character lori = new GoodCharacters("Lori Grimes", loriInventory, 5, (double) 1/12,
             (double) 1/8, "No problem, ı get it", "Maybe this isn’t a world for children anymore.");
     Character shane = new Person("Shane Walsh", shaneInventory, 33, (double) 1/3,
@@ -44,19 +48,19 @@ public class Chapter {
     Character carl = new GoodCharacters("Carl Grimes", carlInventory, 8, (double) 1/10,
             (double) 1/20, "Okay daddy, love ya", "I am not a kid any more, okay!!");
     Character governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
-            (double) 2/10, "", "I am not a kid any more, okay!!");
+            (double) 2/10, "You're making the decisions today, Rick!", "Liar!!!");
     Character zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
             (double) 1 / 10, "whaaaaaaaa", "whaaaaaaaa");
     Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
-            (double) 1/5, "Let'", "I ain’t no one’s b*tch");
+            (double) 1/5, "ı am in love with maggie", "ı am not a chinesee ı am a coreannn mother fu*kerrrrrr!!");
     Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
-            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
-    Character hershel = new GoodCharacters("Hershel Greene", maggieInventory, 22, (double) 7/9,
-            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
-    Character carol = new GoodCharacters("Carol", maggieInventory, 22, (double) 7/9,
-            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
-    Character michonne = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
-            (double) 2/5, "Let's go man", "I ain’t no one’s b*tch");
+            (double) 2/5, "okay let's do it", "ı am with glenn fu*k of");
+    Character hershel = new GoodCharacters("Hershel Greene", hershelInventory, 10, (double) 1/9,
+            (double) 2/5, "be with god, amen", "hey you who the hell you that you can cut my leg huh ??!!");
+    Character carol = new GoodCharacters("Carol", carolInventory, 8, (double) 1/9,
+            (double) 2/5, "I miss my vibrator.", "Some people just can't give up. Like us.");
+    Character michonne = new GoodCharacters("Michonne", michonneInventory, 25, (double) 6/9,
+            (double) 2/5, "We’re gonna catch up with a lot of things and we’re gonna end them.", "Anger makes you stupid. Stupid gets you killed.");
 
     int missionIndex = 0;
     private int mission2Index = 0;
@@ -141,7 +145,7 @@ public class Chapter {
                     places2.add(p23);
                     places2.add(p24);
                     places2.add(p25);
-                break;
+                    break;
 
             case 3: missions3.add(m31);
                     missions3.add(m32);
@@ -153,13 +157,13 @@ public class Chapter {
                     places3.add(p33);
                     places3.add(p34);
                     places3.add(p35);
-                break;
+                    break;
 
             case 4: places4.add(p41);
                     places4.add(p42);
                     places4.add(p43);
                     places4.add(p44);
-                break;
+                    break;
 
         }
 
@@ -209,7 +213,8 @@ public class Chapter {
 
     }
 
-    public void selection() {
+    public int selection() {
+        selectionNo = 0;
         System.out.println("please select what do you want.");
         while (selectionNo != 0) {
             try {
@@ -218,9 +223,10 @@ public class Chapter {
                 System.out.println("You have entered invalid character please try again!!");
             }
         }
+        return selectionNo;
     }
 
-    public void characterAction() {
+    public void assignTheSelection() {
 
     }
 
@@ -230,6 +236,7 @@ public class Chapter {
             for(missionIndex=0;missionIndex<missions1.size();){
                 showMission(no);
                 for(int j=0;j<missions1.get(missionIndex).getPlace().getCharacters().size();j++){
+                    missions1.get(missionIndex).getPlace().setCharactersNo();
                     missions1.get(missionIndex).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
                 }
@@ -242,6 +249,7 @@ public class Chapter {
             for(mission2Index=0;mission2Index<missions2.size();){
                 showMission(no);
                 for(int j=0;j<missions2.get(mission2Index).getPlace().getCharacters().size();j++){
+                    missions2.get(mission2Index).getPlace().setCharactersNo();
                     missions2.get(mission2Index).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
 
@@ -254,6 +262,7 @@ public class Chapter {
             for(mission3Index=0;mission3Index<missions3.size();){
                 showMission(no);
                 for(int j=0;j<missions3.get(mission3Index).getPlace().getCharacters().size();j++){
+                    missions3.get(mission3Index).getPlace().setCharactersNo();
                     missions3.get(mission3Index).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
                 }
@@ -304,22 +313,16 @@ public class Chapter {
     }
     public void addCharactersToPlaces (int chapterNo) {
         addZombieToPlace(chapterNo);
-        ArrayList<Places> currentPlaceList;
         switch (chapterNo) {
             case 1:
-                currentPlaceList = places1;
                 m12.getPlace().getCharacters().add(morgan);
                 m13.getPlace().getCharacters().add(glenn);
                 m14.getPlace().getCharacters().add(carl);
                 m14.getPlace().getCharacters().add(lori);
                 m14.getPlace().getCharacters().add(darly);
                 m14.getPlace().getCharacters().add(shane);
-                for (Places places : currentPlaceList) {
-                    places.setCharactersNo();
-                }
                 break;
             case 2:
-                currentPlaceList = places2;
                 m21.getPlace().getCharacters().add(carol);
                 m21.getPlace().getCharacters().add(shane);
                 m21.getPlace().getCharacters().add(lori);
@@ -331,12 +334,8 @@ public class Chapter {
                 m23.getPlace().getCharacters().add(darly);
                 m23.getPlace().getCharacters().add(shane);
                 m25.getPlace().getCharacters().add(shane);
-                for (Places places : currentPlaceList) {
-                    places.setCharactersNo();
-                }
                 break;
             case 3:
-                currentPlaceList = places3;
                 m31.getPlace().getCharacters().add(darly);
                 m32.getPlace().getCharacters().add(carl);
                 m32.getPlace().getCharacters().add(maggie);
@@ -353,9 +352,6 @@ public class Chapter {
                 m35.getPlace().getCharacters().add(maggie);
                 m35.getPlace().getCharacters().add(glenn);
                 m35.getPlace().getCharacters().add(hershel);
-                for (Places places : currentPlaceList) {
-                    places.setCharactersNo();
-                }
                 break;
             case 4:
                 System.out.println("Daha mission 4 objeleri oluşturulmadı onlar oluşturulunca case 4 tamamlanıcak");
