@@ -365,7 +365,4 @@ public class Chapter {
     public void addOneMoreBadPerson() {
 
     }
-
-
-public class Chapter {
 }
