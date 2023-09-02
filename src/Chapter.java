@@ -113,16 +113,14 @@ public class Chapter {
     Mission m35 = new Mission("Battle with the governor and his crew", governor, p35);
 
     /*
-        Burada mission 4 objeleri oluşturulacak!!!!
+       Todo: Burada mission 4 objeleri oluşturulacak!!!!
 
      */
 
 
 
     public Chapter(int chapterNo) {
-/*
- switch-case'te break'ler silindi çünkü diğer arraylistlere ekleme yapamadı sadece 1'e yaptı
- */
+
         switch (chapterNo){
             case 1: missions1.add(m11);
                     missions1.add(m12);
@@ -171,21 +169,27 @@ public class Chapter {
     public void nextMission(int chapterNo){
 
         if(chapterNo == 1){
-                m11.isMissionCompleted(rick);//Method oluşturduğumuzda buraya method gelecek her zaman true olmayacak
-                if(m11.isMissionCompleted){
-                    missionIndex++;
+            for(Mission missions : missions1){
+                    missions.isMissionCompleted(rick);
                 }
+            if(missions1.get(missionIndex).isMissionCompleted){
+                missionIndex++;
+            }
 
         } else if(chapterNo == 2){
-            mis.isMissionCompleted = true;
-            if(mis.isMissionCompleted){
-                    mission2Index++;
-                }
+            for(Mission missions2 : missions2){
+                missions2.isMissionCompleted(rick);
+            }
+            if(missions2.get(mission2Index).isMissionCompleted){
+                mission2Index++;
+            }
 
         }else if(chapterNo == 3){
 
-            mis.isMissionCompleted = true;
-            if(mis.isMissionCompleted){
+            for(Mission missions3 : missions3){
+                missions3.isMissionCompleted(rick);
+            }
+            if(missions3.get(mission3Index).isMissionCompleted){
                 mission3Index++;
             }
         }
@@ -215,7 +219,7 @@ public class Chapter {
         selectionNo = -1;
         while (selectionNo <= 0 || selectionNo > maxLimit) {
             try {
-                System.out.println("please select what do you want.");
+                System.out.println("Please select what do you want: ");
                 selectionNo = mySc.nextInt();
             } catch (Exception exception) {
                 System.out.println("You have entered invalid character please try again!!");
@@ -255,8 +259,9 @@ public class Chapter {
                     missions2.get(mission2Index).getPlace().setCharactersNo();
                     missions2.get(mission2Index).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
-
                 }
+                assignTheSelection(missions2.get(mission2Index).getPlace(), missions2.get(mission2Index).getPlace().
+                        getCharacters().get(missions2.get(mission2Index).getPlace().getCharacters().size()-1).getCharacterNo());
                 nextMission(no);
             }
         }
@@ -269,6 +274,8 @@ public class Chapter {
                     missions3.get(mission3Index).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
                 }
+                assignTheSelection(missions3.get(mission3Index).getPlace(), missions3.get(mission3Index).getPlace().
+                        getCharacters().get(missions3.get(mission3Index).getPlace().getCharacters().size()-1).getCharacterNo());
                 nextMission(no);
             }
         }
