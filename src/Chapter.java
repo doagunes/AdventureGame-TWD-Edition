@@ -232,8 +232,6 @@ public class Chapter {
     }
 
 
-
-
     public void showSelections(int no){
         if(no == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
