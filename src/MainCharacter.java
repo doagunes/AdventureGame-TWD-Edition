@@ -17,6 +17,5 @@ public class MainCharacter extends Character{
 
     @Override
     public void act() {
-
     }
 }
