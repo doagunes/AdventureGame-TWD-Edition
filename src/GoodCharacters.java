@@ -7,4 +7,5 @@ public class GoodCharacters extends Character{
     public void act() {
         talk();
     }
+
 }

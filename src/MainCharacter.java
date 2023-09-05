@@ -28,7 +28,6 @@ public class MainCharacter extends Character{
 
     @Override
     public void act() {
-
     }
 
    public void rateCalculation(BadCharacters character){

@@ -8,4 +8,6 @@ public class Zombie extends BadCharacters{
         attack();
     }
 
+
+
 }
