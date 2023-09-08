@@ -90,21 +90,16 @@ public class MainCharacter extends Character{
         desicionType = -1;
         while(desicionType != 1 || desicionType != 2){
             try{
-                isGoodCharacter();
-                if(isGood){
-                    System.out.println("Do you want to start this conversition GOOD or BAD..\n" +
-                            "1 -> GOOD     2 -> BAD");
-                    desicionType = Integer.parseInt(scanner.nextLine());
-                    if(desicionType == 1){
-                        System.out.println(getName() + ": " + goodQuote);
-                        System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().goodQuote);
-                        break;
-                    }else if(desicionType == 2){
-                        System.out.println(getName() + " " + badQuote);
-                        System.out.println(getSelectCharacter().getName() + " " + getSelectCharacter().badQuote);
-                        break;
-                    }
-                }else{
+                System.out.println("Do you want to start this conversition GOOD or BAD..\n" +
+                        "1 -> GOOD     2 -> BAD");
+                desicionType = Integer.parseInt(scanner.nextLine());
+                if(desicionType == 1){
+                    System.out.println(getName() + ": " + goodQuote);
+                    System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().goodQuote);
+                    break;
+                }else if(desicionType == 2){
+                    System.out.println(getName() + " " + badQuote);
+                    System.out.println(getSelectCharacter().getName() + " " + getSelectCharacter().badQuote);
                     break;
                 }
             }catch (Exception e){
@@ -141,14 +136,13 @@ public class MainCharacter extends Character{
         if(isCriticalRandom){
 
             if(isDefenseRandom){
-
-                character.health -= power;// sadece power'ı printle
                 System.out.println("You hit: " + power);
+                character.health -= power;// sadece power'ı printle
+
 
             }else {
-
-                 character.health = 0; // headshotla öldü
                 System.out.println("You have killed this enemy with head shot");
+                 character.health = 0; // headshotla öldü
             }
 
         }else{
@@ -156,14 +150,12 @@ public class MainCharacter extends Character{
             if(isDefenseRandom){
 
                 double newPower = (1-character.defenseRate) * power;
-                
-                 character.health -= newPower; //yeni kullanılan power'ı printle
                 System.out.println("You hit: " + newPower);
+                character.health -= newPower; //yeni kullanılan power'ı printle
 
             }else {
-
-                 character.health -= power; // sadece power'ı printle
                 System.out.println("You hit: " + power);
+                 character.health -= power; // sadece power'ı printle
             }
         }
     }
