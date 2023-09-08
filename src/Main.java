@@ -19,9 +19,6 @@ public class Main {
          */
 
 
-
-
-        
         cha.addCharactersToPlaces(1);
         cha.showSelections(1);
         System.out.println("***************");
@@ -34,8 +31,6 @@ public class Main {
         System.out.println("***************");
         cha3.addCharactersToPlaces(3);
         cha3.showSelections(3);
-
-
 
 
         /*

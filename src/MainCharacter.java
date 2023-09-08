@@ -1,6 +1,9 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class MainCharacter extends Character{
+
+    Scanner scanner = new Scanner(System.in);
 
     double rickCriticalNumber = 0;
     double badCharacterDefenseNumber = 0;
@@ -8,6 +11,12 @@ public class MainCharacter extends Character{
     boolean isDefenseRandom = false;
     double criticalRandom = 0;
     double defenseRandom = 0;
+    int desicionType;
+
+    static double health;
+
+    boolean isGood = false;
+
 
     private Character selectCharacter;
     Random random = new Random();
@@ -30,7 +39,79 @@ public class MainCharacter extends Character{
     public void act() {
     }
 
-   public void rateCalculation(BadCharacters character){
+    public void warningHealthMetod(){
+
+        // Todo: Sadece attack() metotlarından sonra kullanmayı öneren algoritmayı oluştur!!!
+        int desicionNumber = -1;
+        if(health < 150){
+        while(desicionNumber != 1 || desicionNumber != 2) {
+            // Todo: Denemek için böyle sonra değiştirilecek!!!
+            try {
+                System.out.println("Your health is very low\n" +
+                        "1 -> Use Bandage    2 -> Not Use");
+                desicionNumber = Integer.parseInt(scanner.nextLine()); //String girildiğinde catch bloğuna girecek!!!!
+
+                if (desicionNumber == 1) {
+                    health += 20; // Todo: Değişebilir
+                    System.out.println("New Health: " + health);
+                    int decreasedBandageNumber = inventory.getBandageNumber() - 1;
+                    inventory.setBandageNumber(decreasedBandageNumber);
+
+                    System.out.println("Number of bandages remaining: " + inventory.getBandageNumber());
+                    break;
+
+                } else if (desicionNumber == 2) {
+                    System.out.println("BEST OF LUCK :))))");
+                    break;
+                }
+            } catch (Exception exception) {
+                System.out.println("You should enter valid number!!\n");
+            }
+        }
+
+
+        }
+    }
+
+    public void isGoodCharacter(){
+        isGood = false;
+        if(selectCharacter.getClass().equals(GoodCharacters.class)){
+            isGood = true;
+        }else if(selectCharacter.getClass().equals(BadCharacters.class)){
+            isGood = false;
+        }
+    }
+
+    public void talkWithCharacters(){
+        desicionType = -1;
+        while(desicionType != 1 || desicionType != 2){
+            try{
+                isGoodCharacter();
+                if(isGood){
+                    System.out.println("Do you want to start this conversition GOOD or BAD..\n" +
+                            "1 -> GOOD     2 -> BAD");
+                    desicionType = Integer.parseInt(scanner.nextLine());
+                    if(desicionType == 1){
+                        System.out.println(getName() + ": " + goodQuote);
+                        System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().goodQuote);
+                        break;
+                    }else if(desicionType == 2){
+                        System.out.println(getName() + " " + badQuote);
+                        System.out.println(getSelectCharacter().getName() + " " + getSelectCharacter().badQuote);
+                        break;
+                    }
+                }else{
+                    break;
+                }
+            }catch (Exception e){
+                System.out.println("You should enter valid number!!\n");
+            }
+
+        }
+
+    }
+
+   public void rateCalculation(Character character){
 
         rickCriticalNumber = criticalRate * 10;
         badCharacterDefenseNumber = character.defenseRate * 10;
@@ -49,7 +130,7 @@ public class MainCharacter extends Character{
 
    }
 
-    public double attackToBadCharacter(BadCharacters character){
+    public void attackToBadCharacter(Character character){
 
         rateCalculation(character);
 
@@ -57,11 +138,13 @@ public class MainCharacter extends Character{
 
             if(isDefenseRandom){
 
-                return character.health - power;
+                character.health -= power;// sadece power'ı printle
+                System.out.println("You hit: " + power);
 
             }else {
 
-                return character.health = 0;
+                 character.health = 0; // headshotla öldü
+                System.out.println("You have killed this enemy with head shot");
             }
 
         }else{
@@ -70,11 +153,13 @@ public class MainCharacter extends Character{
 
                 double newPower = (1-character.defenseRate) * power;
                 
-                return character.health - newPower;
+                 character.health -= newPower; //yeni kullanılan power'ı printle
+                System.out.println("You hit: " + newPower);
 
             }else {
 
-                return character.health - power;
+                 character.health -= power; // sadece power'ı printle
+                System.out.println("You hit: " + power);
             }
         }
     }
