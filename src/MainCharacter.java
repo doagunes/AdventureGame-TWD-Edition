@@ -94,10 +94,12 @@ public class MainCharacter extends Character{
                     if(desicionType == 1){
                         System.out.println(getName() + ": " + goodQuote);
                         System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().goodQuote);
+                        System.out.println();
                         break;
                     }else if(desicionType == 2){
-                        System.out.println(getName() + " " + badQuote);
-                        System.out.println(getSelectCharacter().getName() + " " + getSelectCharacter().badQuote);
+                        System.out.println(getName() + ": " + badQuote);
+                        System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().badQuote);
+                        System.out.println();
                         break;
                     }
                 }else{
