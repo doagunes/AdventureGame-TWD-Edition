@@ -6,6 +6,7 @@ public class Chapter {
     Scanner mySc = new Scanner(System.in);
     private int chapterNo;
     private int selectionNo = 0;
+
     private boolean continueAttack = true;
 
 
@@ -250,16 +251,16 @@ public class Chapter {
         if(chapterNo == 1){
 
             System.out.println("Place Name: " + missions1.get(missionIndex).getPlace().getName() + "\n" +
-                    "Mission Description: " + missions1.get(missionIndex).getDescription() + "\n");
+                    "Mission Description: " + missions1.get(missionIndex).getDescription() );
 
         } else if(chapterNo == 2){
             System.out.println("Place name: " + missions2.get(mission2Index).getPlace().getName() + "\n" +
-                    "Mission Description: " + missions2.get(mission2Index).getDescription() + "\n");
+                    "Mission Description: " + missions2.get(mission2Index).getDescription() );
 
         }else if(chapterNo == 3){
 
             System.out.println("Place name: " + missions3.get(mission3Index).getPlace().getName() + "\n" +
-                    "Mission Description: " + missions3.get(mission3Index).getDescription() + "\n");
+                    "Mission Description: " + missions3.get(mission3Index).getDescription() );
 
         }
 
