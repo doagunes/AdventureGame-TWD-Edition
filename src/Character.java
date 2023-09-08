@@ -29,6 +29,7 @@ public abstract class Character {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
@@ -41,11 +42,11 @@ public abstract class Character {
         this.inventory = inventory;
     }
 
-    public double getHealth() {
+    public  double getHealth() {
         return health;
     }
 
-    public void setHealth(double health) {
+    public  void setHealth(double health) {
         this.health = health;
     }
 
