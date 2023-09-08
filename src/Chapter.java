@@ -54,7 +54,7 @@ public class Chapter {
             (double) 1/10, "Okay daddy, love ya", "I am not a kid any more, okay!!", false);
     BadCharacters governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
             (double) 2/10, "You're making the decisions today, Rick!", "Liar!!!", true);
-    BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 2 / 10,
+    BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
             (double) 2/10, "whaaaaaaaa", "whaaaaaaaa", true);
     Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
             (double) 3/10, "ı am in love with maggie", "ı am not a chinesee ı am a korean mother fu*kerrrrrr!!", false);
@@ -129,7 +129,11 @@ public class Chapter {
         while (rick.health > 0 && rick.getSelectCharacter().health > 0 && continueAttack) {
             if (turnNo % 2 != 0) { // turn is on rick
                 showCharsInfo();
+                rick.warningHealthMetod(); // Todo: BENHURA SORRR
                 isUserWantToEscape();
+                if(!continueAttack){
+                    break;
+                }
                 System.out.println("Turn is yours you can attack..");
                 rick.attackToBadCharacter(rick.getSelectCharacter()); //
                 turnNo++;
@@ -163,16 +167,15 @@ public class Chapter {
             }
         }
     }
-    
+
     public void actionDirection() {
         rick.isGoodCharacter();
         if (!rick.isGood) {
             attackScreen(rick.getSelectCharacter());
         } else {
-            rick.talkWithCharacters();
+            rick.talkWithCharacters(lori, carol, hershel);
         }
     }
-
 
     public Chapter(int chapterNo) {
         switch (chapterNo){
@@ -290,10 +293,10 @@ public class Chapter {
 
 
     public void play(int no){
+        // Todo: rick öldüğünde bu metottan çıkacak!!!
         if(no == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
                 showMission(no);
-                rick.warningHealthMetod();
                 System.out.println();
                 for(int j=0;j<missions1.get(missionIndex).getPlace().getCharacters().size();j++){
                     missions1.get(missionIndex).getPlace().setCharactersNo();
@@ -303,17 +306,13 @@ public class Chapter {
                 assignTheSelection(missions1.get(missionIndex).getPlace(), missions1.get(missionIndex).getPlace().
                         getCharacters().get(missions1.get(missionIndex).getPlace().getCharacters().size()-1).getCharacterNo());
                 actionDirection();
-                bandageFromCharacterToRick();
-
                 nextMission(no);
-
             }
         }
 
         else if(no == 2){
             for(mission2Index=0;mission2Index<missions2.size();){
                 showMission(no);
-                rick.warningHealthMetod();
                 for(int j=0;j<missions2.get(mission2Index).getPlace().getCharacters().size();j++){
                     missions2.get(mission2Index).getPlace().setCharactersNo();
                     missions2.get(mission2Index).getPlace().getCharacters().get(j).act();
@@ -321,8 +320,7 @@ public class Chapter {
                 }
                 assignTheSelection(missions2.get(mission2Index).getPlace(), missions2.get(mission2Index).getPlace().
                         getCharacters().get(missions2.get(mission2Index).getPlace().getCharacters().size()-1).getCharacterNo());
-                rick.talkWithCharacters();
-                bandageFromCharacterToRick();
+                actionDirection();
                 nextMission(no);
             }
         }
@@ -330,7 +328,6 @@ public class Chapter {
         else if(no == 3){
             for(mission3Index=0;mission3Index<missions3.size();){
                 showMission(no);
-                rick.warningHealthMetod();
                 for(int j=0;j<missions3.get(mission3Index).getPlace().getCharacters().size();j++){
                     missions3.get(mission3Index).getPlace().setCharactersNo();
                     missions3.get(mission3Index).getPlace().getCharacters().get(j).act();
@@ -338,8 +335,7 @@ public class Chapter {
                 }
                 assignTheSelection(missions3.get(mission3Index).getPlace(), missions3.get(mission3Index).getPlace().
                         getCharacters().get(missions3.get(mission3Index).getPlace().getCharacters().size()-1).getCharacterNo());
-                rick.talkWithCharacters();
-                bandageFromCharacterToRick();
+                actionDirection();
                 nextMission(no);
             }
         }
@@ -443,23 +439,6 @@ public class Chapter {
         }
     }
 
-
-    public void bandageFromCharacterToRick(){
-
-        // Todo : sınırlama olacak
-
-            if((rick.getSelectCharacter() == lori) ||
-                    (rick.getSelectCharacter() == carol) ||
-                    (rick.getSelectCharacter() == hershel)){
-                if(rick.desicionType == 1){
-                    int increasedBandageNumber = rickInventory.getBandageNumber() +1;
-                    rickInventory.setBandageNumber(increasedBandageNumber);
-                    System.out.println(rick.getSelectCharacter().getName() + ": " + "Please take this bandage, you will need..");
-                    System.out.println("Number of bandages remaining: " + rickInventory.getBandageNumber());
-                }
-
-            }
-    }
 
 
 }

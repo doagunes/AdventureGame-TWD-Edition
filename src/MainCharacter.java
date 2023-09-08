@@ -47,7 +47,7 @@ public class MainCharacter extends Character{
 
         // Todo: Sadece attack() metotlarından sonra kullanmayı öneren algoritmayı oluştur!!!
         int desicionNumber = -1;
-        if(health < 150){
+        if(health > 0 && health < 150){
         while(desicionNumber != 1 || desicionNumber != 2) {
             // Todo: Denemek için böyle sonra değiştirilecek!!!
             try {
@@ -86,16 +86,17 @@ public class MainCharacter extends Character{
         }
     }
 
-    public void talkWithCharacters(){
+    public void talkWithCharacters(Character character , Character character2, Character character3){
         desicionType = -1;
         while(desicionType != 1 || desicionType != 2){
             try{
-                System.out.println("Do you want to start this conversition GOOD or BAD..\n" +
+                System.out.println("Do you want to start this conversation GOOD or BAD..\n" +
                         "1 -> GOOD     2 -> BAD");
                 desicionType = Integer.parseInt(scanner.nextLine());
                 if(desicionType == 1){
                     System.out.println(getName() + ": " + goodQuote);
                     System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().goodQuote);
+                    bandageFromCharacterToRick(character, character2, character3);
                     break;
                 }else if(desicionType == 2){
                     System.out.println(getName() + " " + badQuote);
@@ -110,6 +111,20 @@ public class MainCharacter extends Character{
 
     }
 
+    public void bandageFromCharacterToRick(Character character, Character character2, Character character3){
+
+        // Todo : sınırlama olacak
+
+        if((getSelectCharacter() == character) || (getSelectCharacter() == character2) || (getSelectCharacter() == character3)) {
+            if(desicionType == 1){
+                int increasedBandageNumber = inventory.getBandageNumber() +1;
+                inventory.setBandageNumber(increasedBandageNumber);
+                System.out.println(getSelectCharacter().getName() + ": " + "Please take this bandage, you will need..");
+                System.out.println("Number of bandages remaining: " + inventory.getBandageNumber());
+            }
+
+        }
+    }
 
    public void rateCalculation(Character character){
 
