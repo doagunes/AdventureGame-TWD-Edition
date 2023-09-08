@@ -121,10 +121,10 @@ public class MainCharacter extends Character{
         criticalRandom = random.nextDouble(11);
         defenseRandom = random.nextDouble(11);
 
-        if(criticalRandom >= 0 || criticalRandom <= rickCriticalNumber){
+        if(criticalRandom <= rickCriticalNumber){
             isCriticalRandom = true;
         }
-        if(defenseRandom >= 0 || defenseRandom <= badCharacterDefenseNumber){
+        if(defenseRandom <= badCharacterDefenseNumber){
             isDefenseRandom = true;
         }
 
@@ -133,6 +133,8 @@ public class MainCharacter extends Character{
     public void attackToBadCharacter(Character character){
 
         rateCalculation(character);
+        System.out.println(isCriticalRandom);
+        System.out.println(isDefenseRandom);
 
         if(isCriticalRandom){
 
