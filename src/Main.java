@@ -1,5 +1,3 @@
-import java.util.Random;
-
 // Press ⇧ twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -19,21 +17,19 @@ public class Main {
          */
 
 
-        cha.showCharsInfo();
-
         
         cha.addCharactersToPlaces(1);
-        cha.showSelections(1);
+        cha.play(1);
         System.out.println("***************");
 
 
         cha2.addCharactersToPlaces(2);
-        cha2.showSelections(2);
+        cha2.play(2);
 
 
         System.out.println("***************");
         cha3.addCharactersToPlaces(3);
-        cha3.showSelections(3);
+        cha3.play(3);
 
 
         /*

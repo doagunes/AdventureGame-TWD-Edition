@@ -21,21 +21,21 @@ public class BadCharacters extends Character{
     public void attackTo(MainCharacter rick) {
         switch (decidingAttackChoice(rick)) {
             case 1 -> {
+                System.out.printf("%n%s hit : %f",getName(), power );
                 rick.health -= power;
-                System.out.println("You hit : "+ power );
             }
             case 2 -> {
-                 rick.health -= (1-rick.defenseRate) * power;
-                System.out.println("You hit : " + (1-rick.defenseRate) * power);
+                System.out.printf("%n%s hit : %f",getName(), (1-rick.defenseRate) * power );
+                rick.health -= (1-rick.defenseRate) * power;
             }
             case 3 -> {
-                 rick.health = 0;
-                System.out.println("You hit : " + rick.health);
+                System.out.printf("%n%s hit : %f",getName(), rick.health);
+                rick.health = 0;
             }
         }
     }
     public void isUseCriticalRate() {
-        useCriticalRate = true;
+        useCriticalRate = false;
         Random random = new Random();
         double limitCriticNo = (criticalRate * 10);
         double randomNO = random.nextDouble(11);

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -125,12 +124,13 @@ public class Chapter {
     public void attackScreen(Character enemy) { // fonksiyonu kullanırken paramtere olan enemy yerine rick.getSelectedCharacter() gelicek method içinde kullanılmayı kolaylaştırıyor
         int turnNo = 1;
         continueAttack = true;
-        while (rick.health != 0 && rick.getSelectCharacter().health != 0 && continueAttack) {
+        System.out.println(rick.getSelectCharacter().health);
+        while (rick.health > 0 && rick.getSelectCharacter().health > 0 && continueAttack) {
             if (turnNo % 2 != 0) { // turn is on rick
                 showCharsInfo();
                 isUserWantToEscape();
                 System.out.println("Turn is yours you can attack..");
-                rick.attackToBadCharacter((BadCharacters) rick.getSelectCharacter()); // todo doga push'layınca (BadCharackters)'i sil
+                rick.attackToBadCharacter(rick.getSelectCharacter()); //
                 turnNo++;
             } else {
                 showCharsInfo();
@@ -139,6 +139,7 @@ public class Chapter {
                 turnNo++;
             }
         }
+        if (rick.getSelectCharacter().health <= 0) {rick.getSelectCharacter().setHealth(100);}
     }
     public void isUserWantToEscape() {
         int escapeNo;// if it would 1 then our continueAttack will be false
@@ -159,11 +160,12 @@ public class Chapter {
             }
         }
     }
-    public void actionDirection(boolean isBadChar) {
-        if (isBadChar) {
+    public void actionDirection() {
+        rick.isGoodCharacter();
+        if (!rick.isGood) {
             attackScreen(rick.getSelectCharacter());
         } else {
-            // TODO: buraya konuşma methodu çağırılcak daha yapılmadı
+            rick.talkWithCharacters();
         }
     }
 
@@ -269,6 +271,7 @@ public class Chapter {
             try {
                 System.out.println("Please select what do you want: ");
                 selectionNo = mySc.nextInt();
+                mySc.nextLine();
             } catch (Exception exception) {
                 System.out.println("You have entered invalid character please try again!!");
             }
@@ -282,7 +285,7 @@ public class Chapter {
     }
 
 
-    public void showSelections(int no){
+    public void play(int no){
         if(no == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
                 showMission(no);
@@ -295,7 +298,7 @@ public class Chapter {
                 }
                 assignTheSelection(missions1.get(missionIndex).getPlace(), missions1.get(missionIndex).getPlace().
                         getCharacters().get(missions1.get(missionIndex).getPlace().getCharacters().size()-1).getCharacterNo());
-                rick.talkWithCharacters();
+                actionDirection();
                 bandageFromCharacterToRick();
 
                 nextMission(no);
@@ -355,9 +358,9 @@ public class Chapter {
 
     }
     public void showCharsInfo() {
-        String formattedText1 = String.format("%-22s %-15s", rick.getName(), zombie.name);
-        String formattedText2 = String.format("Health: %-14f Health: %-15f", rick.health, zombie.health);
-        String formattedText3 = String.format("Power: %-15f Power: %-15f", rick.power, zombie.power);
+        String formattedText1 = String.format("%-22s %-15s", rick.getName(), rick.getSelectCharacter().name);
+        String formattedText2 = String.format("Health: %-14f Health: %-15f", rick.health, rick.getSelectCharacter().health);
+        String formattedText3 = String.format("Power: %-15f Power: %-15f", rick.power, rick.getSelectCharacter().power);
 
         System.out.println(formattedText1);
         System.out.println(formattedText2);
