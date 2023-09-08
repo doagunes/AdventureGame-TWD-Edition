@@ -9,9 +9,10 @@ public abstract class Character {
     double defenseRate;
     String goodQuote;
     String badQuote;
+    private boolean isBadChar;
 
     public Character(String name, Inventory inventory, double power, double criticalRate,
-                     double defenseRate, String goodQuote, String badQuote) {
+                     double defenseRate, String goodQuote, String badQuote, boolean isBadChar) {
         killedCharacterNo = 0;
         this.name = name;
         this.inventory = inventory;
@@ -20,6 +21,7 @@ public abstract class Character {
         this.defenseRate = defenseRate;
         this.goodQuote = goodQuote;
         this.badQuote = badQuote;
+        this.isBadChar = isBadChar;
     }
 
     public Character() {
@@ -114,6 +116,6 @@ public abstract class Character {
     }
 
     public abstract void act();
-
+    public abstract void attackTo(MainCharacter rick);
 
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -6,7 +7,8 @@ public class Chapter {
     Scanner mySc = new Scanner(System.in);
     private int chapterNo;
     private int selectionNo = 0;
-    int counter;
+    private boolean continueAttack = true;
+
 
 
     Mission mis = new Mission();
@@ -38,31 +40,32 @@ public class Chapter {
 
 
     MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
-            (double) 3 /10, "Hello how is it going?", "nope, ı don't think so");
-    Character darly = new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
-            (double) 2/10, "Let's go man", "I ain’t no one’s b*tch");
+            (double) 3 /10, "Hello how is it going?", "nope, ı don't think so", false);
+    Character darly= new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
+            (double) 3 /10, "Hello how is it going?", "nope, ı don't think so", false);
     Character morgan = new GoodCharacters("Morgan", morganInventory, 22, (double) 7/9,
-            (double) 4/10, "We’re not doing careful. We’re doing right", "This world... we're always on our own.");
+            (double) 4/10, "We’re not doing careful. We’re doing right", "This world... we're always on our own.", false);
     Character lori = new GoodCharacters("Lori Grimes", loriInventory, 5, (double) 1/12,
-            (double) 1/10, "No problem, ı get it", "Maybe this isn’t a world for children anymore.");
+            (double) 1/10, "No problem, ı get it",  "Maybe this isn’t a world for children anymore.",false);
     BadCharacters shane = new Person("Shane Walsh", shaneInventory, 33, (double) 1/3,
-            (double) 3/10, "....", "....");
+            (double) 3/10, "Okay buddy you are the chief", "Rick, you can’t just be the good guy and expect to live. Okay? Not anymore."
+    ,true);
     Character carl = new GoodCharacters("Carl Grimes", carlInventory, 8, (double) 1/10,
-            (double) 1/10, "Okay daddy, love ya", "I am not a kid any more, okay!!");
+            (double) 1/10, "Okay daddy, love ya", "I am not a kid any more, okay!!", false);
     BadCharacters governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
-            (double) 2/10, "....", "...");
+            (double) 2/10, "You're making the decisions today, Rick!", "Liar!!!", true);
     BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
-            (double) 1/10, "...", "...");
+            (double) 1/10, "whaaaaaaaa", "whaaaaaaaa", true);
     Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
-            (double) 3/10, "ı am in love with maggie", "ı am not a chinesee ı am a korean mother fu*kerrrrrr!!");
+            (double) 3/10, "ı am in love with maggie", "ı am not a chinesee ı am a korean mother fu*kerrrrrr!!", false);
     Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
-            (double) 2/10, "okay let's do it", "ı am with glenn fu*k of");
+            (double) 2/10, "okay let's do it", "ı am with glenn fu*k of", false);
     Character hershel = new GoodCharacters("Hershel Greene", hershelInventory, 10, (double) 1/9,
-            (double) 2/10, "be with god, amen", "hey you who the hell you that you can cut my leg huh ??!!");
+            (double) 2/10, "be with god, amen", "hey you who the hell you that you can cut my leg huh ??!!", false);
     Character carol = new GoodCharacters("Carol", carolInventory, 8, (double) 1/9,
-            (double) 4/10, "I miss my vibrator.", "Some people just can't give up. Like us.");
+            (double) 4/10, "I miss my vibrator.", "Some people just can't give up. Like us.", false);
     Character michonne = new GoodCharacters("Michonne", michonneInventory, 25, (double) 6/9,
-            (double) 5/10, "We’re gonna catch up with a lot of things and we’re gonna end them.", "Anger makes you stupid. Stupid gets you killed.");
+            (double) 5/10, "We’re gonna catch up with a lot of things and we’re gonna end them.", "Anger makes you stupid. Stupid gets you killed.", false);
     int missionIndex = 0;
     private int mission2Index = 0;
     private int mission3Index = 0;
@@ -119,6 +122,50 @@ public class Chapter {
 
      */
 
+    public void attackScreen(Character enemy) { // fonksiyonu kullanırken paramtere olan enemy yerine rick.getSelectedCharacter() gelicek method içinde kullanılmayı kolaylaştırıyor
+        int turnNo = 1;
+        continueAttack = true;
+        while (rick.health != 0 && rick.getSelectCharacter().health != 0 && continueAttack) {
+            if (turnNo % 2 != 0) { // turn is on rick
+                showCharsInfo();
+                isUserWantToEscape();
+                System.out.println("Turn is yours you can attack..");
+                rick.attackToBadCharacter((BadCharacters) rick.getSelectCharacter()); // todo doga push'layınca (BadCharackters)'i sil
+                turnNo++;
+            } else {
+                showCharsInfo();
+                System.out.println("Turn is on : " + enemy.name);
+                enemy.attackTo(rick);
+                turnNo++;
+            }
+        }
+    }
+    public void isUserWantToEscape() {
+        int escapeNo;// if it would 1 then our continueAttack will be false
+        boolean hataliGiris = true;
+
+        while (hataliGiris) {
+            System.out.println("If you want to end attack end escape please press 1, if you want to continue then press 0");
+            String userEnter = mySc.nextLine();
+            try {
+                escapeNo = Integer.parseInt(userEnter);
+                if (escapeNo != 1 && escapeNo != 0) {
+                    hataliGiris = true;
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException exception) {
+                System.out.println("You haven't entered a valid number please try again with valid numbers \n");
+            }
+        }
+    }
+    public void actionDirection(boolean isBadChar) {
+        if (isBadChar) {
+            attackScreen(rick.getSelectCharacter());
+        } else {
+            // TODO: buraya konuşma methodu çağırılcak daha yapılmadı
+        }
+    }
 
 
     public Chapter(int chapterNo) {
@@ -306,6 +353,15 @@ public class Chapter {
 
          */
 
+    }
+    public void showCharsInfo() {
+        String formattedText1 = String.format("%-22s %-15s", rick.getName(), zombie.name);
+        String formattedText2 = String.format("Health: %-14f Health: %-15f", rick.health, zombie.health);
+        String formattedText3 = String.format("Power: %-15f Power: %-15f", rick.power, zombie.power);
+
+        System.out.println(formattedText1);
+        System.out.println(formattedText2);
+        System.out.println(formattedText3);
     }
 
 

@@ -19,6 +19,9 @@ public class Main {
          */
 
 
+        cha.showCharsInfo();
+
+        
         cha.addCharactersToPlaces(1);
         cha.showSelections(1);
         System.out.println("***************");
