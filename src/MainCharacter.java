@@ -86,35 +86,28 @@ public class MainCharacter extends Character{
         }
     }
 
-    public void talkWithCharacters() {
+    public void talkWithCharacters(){
         desicionType = -1;
-        while (desicionType != 1 || desicionType != 2) {
-            try {
-                isGoodCharacter();
-
+        while(desicionType != 1 || desicionType != 2){
+            try{
                 System.out.println("Do you want to start this conversition GOOD or BAD..\n" +
                         "1 -> GOOD     2 -> BAD");
                 desicionType = Integer.parseInt(scanner.nextLine());
-                if (desicionType == 1) {
+                if(desicionType == 1){
                     System.out.println(getName() + ": " + goodQuote);
                     System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().goodQuote);
-                    System.out.println();
                     break;
-                } else if (desicionType == 2) {
-                    System.out.println(getName() + ": " + badQuote);
-                    System.out.println(getSelectCharacter().getName() + ": " + getSelectCharacter().badQuote);
-                    System.out.println();
+                }else if(desicionType == 2){
+                    System.out.println(getName() + " " + badQuote);
+                    System.out.println(getSelectCharacter().getName() + " " + getSelectCharacter().badQuote);
                     break;
                 }
-            } else{
-
-            }
-
-                catch(Exception e){
+            }catch (Exception e){
                 System.out.println("You should enter valid number!!\n");
             }
 
         }
+
     }
 
 
@@ -128,10 +121,10 @@ public class MainCharacter extends Character{
         criticalRandom = random.nextDouble(11);
         defenseRandom = random.nextDouble(11);
 
-        if(criticalRandom >= 0 || criticalRandom <= rickCriticalNumber){
+        if(criticalRandom <= rickCriticalNumber){
             isCriticalRandom = true;
         }
-        if(defenseRandom >= 0 || defenseRandom <= badCharacterDefenseNumber){
+        if(defenseRandom <= badCharacterDefenseNumber){
             isDefenseRandom = true;
         }
 
@@ -140,6 +133,8 @@ public class MainCharacter extends Character{
     public void attackToBadCharacter(Character character){
 
         rateCalculation(character);
+        System.out.println(isCriticalRandom);
+        System.out.println(isDefenseRandom);
 
         if(isCriticalRandom){
 

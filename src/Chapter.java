@@ -39,7 +39,7 @@ public class Chapter {
 
 
 
-    MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
+    MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 5/10,
             (double) 3 /10, "Hello how is it going?", "nope, ı don't think so", false);
     Character darly= new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
             (double) 3 /10, "Hello how is it going?", "nope, ı don't think so", false);
@@ -47,15 +47,15 @@ public class Chapter {
             (double) 4/10, "We’re not doing careful. We’re doing right", "This world... we're always on our own.", false);
     Character lori = new GoodCharacters("Lori Grimes", loriInventory, 5, (double) 1/12,
             (double) 1/10, "No problem, ı get it",  "Maybe this isn’t a world for children anymore.",false);
-    BadCharacters shane = new Person("Shane Walsh", shaneInventory, 33, (double) 1/3,
+    BadCharacters shane = new Person("Shane Walsh", shaneInventory, 33, (double) 4/10,
             (double) 3/10, "Okay buddy you are the chief", "Rick, you can’t just be the good guy and expect to live. Okay? Not anymore."
     ,true);
     Character carl = new GoodCharacters("Carl Grimes", carlInventory, 8, (double) 1/10,
             (double) 1/10, "Okay daddy, love ya", "I am not a kid any more, okay!!", false);
     BadCharacters governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
             (double) 2/10, "You're making the decisions today, Rick!", "Liar!!!", true);
-    BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
-            (double) 1/10, "whaaaaaaaa", "whaaaaaaaa", true);
+    BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 2 / 10,
+            (double) 2/10, "whaaaaaaaa", "whaaaaaaaa", true);
     Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
             (double) 3/10, "ı am in love with maggie", "ı am not a chinesee ı am a korean mother fu*kerrrrrr!!", false);
     Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
@@ -115,7 +115,7 @@ public class Chapter {
     Mission m32 = new Mission("Talk with Carl", carl, p32);
     Mission m33 = new Mission("Save Glenn and Maggie", governor, p33);
     Mission m34 = new Mission("Kill zombies", zombie, p34);
-    Mission m35 = new Mission("Battle with the governor and his crew", governor, p35);
+    Mission m35 = new Mission("Battle with the governor and his crew", governor, p35); // Todo: Vali ölmeyecek şekilde tekrardan kodla!!!
 
     /*
        Todo: Burada mission 4 objeleri oluşturulacak!!!!
@@ -151,8 +151,8 @@ public class Chapter {
             String userEnter = mySc.nextLine();
             try {
                 escapeNo = Integer.parseInt(userEnter);
-                if (escapeNo != 1 && escapeNo != 0) {
-                    hataliGiris = true;
+                if (escapeNo == 1 || escapeNo == 0) {
+                    hataliGiris = false;
                 } else {
                     break;
                 }
@@ -443,7 +443,7 @@ public class Chapter {
 
     public void bandageFromCharacterToRick(){
 
-        //Todo : sınırlama olacak
+        // Todo : sınırlama olacak
 
             if((rick.getSelectCharacter() == lori) ||
                     (rick.getSelectCharacter() == carol) ||
