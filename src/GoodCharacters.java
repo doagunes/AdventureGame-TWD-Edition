@@ -8,4 +8,8 @@ public class GoodCharacters extends Character{
         talk();
     }
 
+    @Override
+    public void attackTo(MainCharacter rick) {
+    }
+
 }

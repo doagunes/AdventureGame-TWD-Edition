@@ -36,8 +36,6 @@ public class Main {
         cha3.showSelections(3);
 
 
-
-
         /*
         System.out.println(mis.isCompleted);
 
