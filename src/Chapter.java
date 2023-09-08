@@ -163,6 +163,7 @@ public class Chapter {
             }
         }
     }
+    
     public void actionDirection() {
         rick.isGoodCharacter();
         if (!rick.isGood) {
