@@ -19,7 +19,7 @@ public class Main {
          */
 
 
-
+        cha.showCharsInfo();
 
         
         cha.addCharactersToPlaces(1);

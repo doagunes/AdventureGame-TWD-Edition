@@ -12,8 +12,8 @@ public class MainCharacter extends Character{
     private Character selectCharacter;
     Random random = new Random();
     public MainCharacter(String name, Inventory inventory, double power,
-                         double criticalRate, double defenseRate, String goodQuote, String badQuote) {
-        super(name, inventory, power, criticalRate, defenseRate, goodQuote, badQuote);
+                         double criticalRate, double defenseRate, String goodQuote, String badQuote, boolean isBadChar) {
+        super(name, inventory, power, criticalRate, defenseRate, goodQuote, badQuote, isBadChar);
         selectCharacter = null;
         health = 300;
     }
@@ -49,7 +49,7 @@ public class MainCharacter extends Character{
 
    }
 
-    public double attackToBadCharacter(BadCharacters character){
+    public double attackToBadCharacter(BadCharacters character){ // TODO: returnler void yapılcak ve sout ile nekadar vurdugunun bilgisi gösterilcek aynı zamanda
 
         rateCalculation(character);
 
