@@ -151,11 +151,13 @@ public class Chapter {
             String userEnter = mySc.nextLine();
             try {
                 escapeNo = Integer.parseInt(userEnter);
-                if (escapeNo != 1 && escapeNo != 0) {
-                    hataliGiris = true;
-                } else {
+                if (escapeNo == 1) {
+                    hataliGiris = false;
+                    continueAttack = false;
+                } else if (escapeNo == 0){
+                    continueAttack = true;
                     break;
-                }
+                } 
             } catch (NumberFormatException exception) {
                 System.out.println("You haven't entered a valid number please try again with valid numbers \n");
             }
