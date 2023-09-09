@@ -37,8 +37,8 @@ public class BadCharacters extends Character{
     public void isUseCriticalRate() {
         useCriticalRate = false;
         Random random = new Random();
-        double limitCriticNo = (criticalRate * 10);
-        double randomNO = random.nextDouble(11);
+        double limitCriticNo = (criticalRate * 100);
+        double randomNO = random.nextDouble(101);
         if (randomNO <= limitCriticNo) {
             useCriticalRate = true;
         }
