@@ -47,14 +47,14 @@ public class Chapter {
             (double) 4/10, "We’re not doing careful. We’re doing right", "This world... we're always on our own.", false);
     Character lori = new GoodCharacters("Lori Grimes", loriInventory, 5, (double) 1/12,
             (double) 1/10, "No problem, ı get it",  "Maybe this isn’t a world for children anymore.",false);
-    BadCharacters shane = new Person("Shane Walsh", shaneInventory, 33, (double) 4/10,
+    BadCharacters shane = new Person("Shane Walsh", shaneInventory, 33, (double) 4/100,
             (double) 3/10, "Okay buddy you are the chief", "Rick, you can’t just be the good guy and expect to live. Okay? Not anymore."
     ,true);
     Character carl = new GoodCharacters("Carl Grimes", carlInventory, 8, (double) 1/10,
             (double) 1/10, "Okay daddy, love ya", "I am not a kid any more, okay!!", false);
-    BadCharacters governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
+    BadCharacters governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 3/100,
             (double) 2/10, "You're making the decisions today, Rick!", "Liar!!!", true);
-    BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
+    BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1/100,
             (double) 2/10, "whaaaaaaaa", "whaaaaaaaa", true);
     Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
             (double) 3/10, "ı am in love with maggie", "ı am not a chinesee ı am a korean mother fu*kerrrrrr!!", false);
@@ -275,11 +275,13 @@ public class Chapter {
 
     public int selection(int maxLimit) {
         selectionNo = -1;
+        String selection = null;
         while (selectionNo <= 0 || selectionNo > maxLimit) {
             try {
                 System.out.println("Please select what do you want: ");
-                selectionNo = mySc.nextInt();
-                mySc.nextLine();
+                selection = mySc.nextLine();
+                selectionNo = Integer.parseInt(selection);
+                //mySc.nextLine();
             } catch (Exception exception) {
                 System.out.println("You have entered invalid character please try again!!");
             }
