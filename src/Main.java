@@ -3,10 +3,17 @@
 public class Main {
     public static void main(String[] args) {
 
+
+        Game game = new Game();
+        game.gamePlay();
+
+
+        /*
         Chapter cha = new Chapter(1);
         Chapter cha2 = new Chapter(2);
         Chapter cha3 = new Chapter(3);
         Mission mis = new Mission();
+
         /*
         for(int i=0;i<cha.missions1.size();i++){
             cha.showMission(1);
@@ -17,7 +24,8 @@ public class Main {
          */
 
 
-        
+
+        /*
         cha.addCharactersToPlaces(1);
         cha.play(1);
         System.out.println("***************");
