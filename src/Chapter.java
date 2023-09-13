@@ -126,7 +126,7 @@ public class Chapter {
         int turnNo = 1;
         continueAttack = true;
         System.out.println(rick.getSelectCharacter().health);
-        while (rick.health > 0 && rick.getSelectCharacter().health > 0 && continueAttack) {
+        while (MainCharacter.health > 0 && rick.getSelectCharacter().health > 0 && continueAttack) {
             if (turnNo % 2 != 0) { // turn is on rick
                 showCharsInfo();
                 rick.warningHealthMetod(); // Todo: BENHURA SORRR
@@ -144,6 +144,7 @@ public class Chapter {
                 turnNo++;
             }
         }
+
         if (rick.getSelectCharacter().health <= 0) {rick.getSelectCharacter().setHealth(100);}
     }
     public void isUserWantToEscape() {
@@ -298,23 +299,32 @@ public class Chapter {
         // Todo: rick öldüğünde bu metottan çıkacak!!!
         if(no == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
+                if(MainCharacter.health <= 0){
+                    break;
+                }
                 showMission(no);
                 System.out.println();
                 for(int j=0;j<missions1.get(missionIndex).getPlace().getCharacters().size();j++){
                     missions1.get(missionIndex).getPlace().setCharactersNo();
                     missions1.get(missionIndex).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
+
                 }
                 assignTheSelection(missions1.get(missionIndex).getPlace(), missions1.get(missionIndex).getPlace().
                         getCharacters().get(missions1.get(missionIndex).getPlace().getCharacters().size()-1).getCharacterNo());
                 actionDirection();
                 nextMission(no);
             }
+
         }
 
         else if(no == 2){
             for(mission2Index=0;mission2Index<missions2.size();){
+                if(MainCharacter.health <= 0){
+                    break;
+                }
                 showMission(no);
+                System.out.println();
                 for(int j=0;j<missions2.get(mission2Index).getPlace().getCharacters().size();j++){
                     missions2.get(mission2Index).getPlace().setCharactersNo();
                     missions2.get(mission2Index).getPlace().getCharacters().get(j).act();
@@ -329,16 +339,24 @@ public class Chapter {
 
         else if(no == 3){
             for(mission3Index=0;mission3Index<missions3.size();){
+                if(MainCharacter.health <= 0){
+                    break;
+                }
                 showMission(no);
+                System.out.println();
                 for(int j=0;j<missions3.get(mission3Index).getPlace().getCharacters().size();j++){
                     missions3.get(mission3Index).getPlace().setCharactersNo();
                     missions3.get(mission3Index).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
+
                 }
                 assignTheSelection(missions3.get(mission3Index).getPlace(), missions3.get(mission3Index).getPlace().
                         getCharacters().get(missions3.get(mission3Index).getPlace().getCharacters().size()-1).getCharacterNo());
                 actionDirection();
                 nextMission(no);
+                if(mission3Index == missions3.size()){
+                    break;
+                }
             }
         }
 
@@ -440,7 +458,6 @@ public class Chapter {
                 break;
         }
     }
-
 
 
 }
