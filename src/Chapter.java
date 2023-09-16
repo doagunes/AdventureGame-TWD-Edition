@@ -301,7 +301,7 @@ public class Chapter {
         if(no == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
                 if(MainCharacter.health <= 0){
-                    break;
+                    return; //metottan çıkılması için break yerine kullanıldı!!!
                 }
                 showMission(no);
                 System.out.println();
@@ -322,7 +322,7 @@ public class Chapter {
         else if(no == 2){
             for(mission2Index=0;mission2Index<missions2.size();){
                 if(MainCharacter.health <= 0){
-                    break;
+                    return;
                 }
                 showMission(no);
                 System.out.println();
@@ -341,7 +341,7 @@ public class Chapter {
         else if(no == 3){
             for(mission3Index=0;mission3Index<missions3.size();){
                 if(MainCharacter.health <= 0){
-                    break;
+                    return;
                 }
                 showMission(no);
                 System.out.println();
@@ -356,7 +356,7 @@ public class Chapter {
                 actionDirection();
                 nextMission(no);
                 if(mission3Index == missions3.size()){
-                    break;
+                    return;
                 }
             }
         }

@@ -113,18 +113,17 @@ public class MainCharacter extends Character{
 
     public void bandageFromCharacterToRick(Character character, Character character2, Character character3){
 
-        // Todo : sınırlama olacak
+        // Todo: sınırlama olacak
 
-        if((getSelectCharacter() == character) || (getSelectCharacter() == character2) || (getSelectCharacter() == character3)) {
-            if(desicionType == 1){
+        if((getSelectCharacter() == character) || (getSelectCharacter() == character2) || (getSelectCharacter() == character3) && desicionType == 1) {
                 int increasedBandageNumber = inventory.getBandageNumber() +1;
                 inventory.setBandageNumber(increasedBandageNumber);
                 System.out.println(getSelectCharacter().getName() + ": " + "Please take this bandage, you will need..");
                 System.out.println("Number of bandages remaining: " + inventory.getBandageNumber());
-            }
-
         }
     }
+
+
 
    public void rateCalculation(Character character){
 

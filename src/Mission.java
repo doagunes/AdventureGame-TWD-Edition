@@ -21,7 +21,7 @@ public class Mission {
 
     }
 
-   public void isMissionCompleted(MainCharacter rick, int zombieNo){
+    public void isMissionCompleted(MainCharacter rick, int zombieNo){
 
         isMissionCompleted = false;
         if(rick.getSelectCharacter().name.equals(mustSelect.name)){
@@ -42,7 +42,7 @@ public class Mission {
             }
             isMissionCompleted = false;
         }
-   }
+    }
 
     public Places getPlace() {
         return place;
