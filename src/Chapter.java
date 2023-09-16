@@ -8,6 +8,7 @@ public class Chapter {
     private int selectionNo = 0;
 
     private boolean continueAttack = true;
+    int maxZombieNo;
 
 
 
@@ -228,7 +229,7 @@ public class Chapter {
 
         if(chapterNo == 1){
             for(Mission missions : missions1){
-                    missions.isMissionCompleted(rick);
+                    missions.isMissionCompleted(rick, maxZombieNo);
                 }
             if(missions1.get(missionIndex).isMissionCompleted){
                 missionIndex++;
@@ -236,7 +237,7 @@ public class Chapter {
 
         } else if(chapterNo == 2){
             for(Mission missions2 : missions2){
-                missions2.isMissionCompleted(rick);
+                missions2.isMissionCompleted(rick, maxZombieNo);
             }
             if(missions2.get(mission2Index).isMissionCompleted){
                 mission2Index++;
@@ -245,7 +246,7 @@ public class Chapter {
         }else if(chapterNo == 3){
 
             for(Mission missions3 : missions3){
-                missions3.isMissionCompleted(rick);
+                missions3.isMissionCompleted(rick, maxZombieNo);
             }
             if(missions3.get(mission3Index).isMissionCompleted){
                 mission3Index++;
@@ -390,7 +391,7 @@ public class Chapter {
 
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
-        int maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+        maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
         ArrayList<Places> currentPlacesList = new ArrayList<>();
         switch (chapterNo) {
             case 1 -> currentPlacesList = places1;

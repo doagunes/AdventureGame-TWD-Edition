@@ -50,4 +50,10 @@ public class Places {
     public void setSelectionMap(HashMap<Integer, Character> selectionMap) {
         this.selectionMap = selectionMap;
     }
+
+    public void eliminateSelection () {
+        selectionMap.remove(1);
+        characters.remove(0);
+        setCharactersNo();
+    }
 }
