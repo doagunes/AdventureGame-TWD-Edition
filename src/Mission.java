@@ -3,6 +3,7 @@ public class Mission {
     private String description;
     private Places place;
     private Character mustSelect;//doğru seçeneği belirlemek için oluşturuldu!!!
+    private int zombieCounter = 0;
 
     boolean isMissionCompleted;
 
@@ -20,11 +21,25 @@ public class Mission {
 
     }
 
-   public void isMissionCompleted(MainCharacter rick){
+   public void isMissionCompleted(MainCharacter rick, int zombieNo){
+
         isMissionCompleted = false;
-        if(rick.getSelectCharacter() == mustSelect){
-            isMissionCompleted = true;
+        if(rick.getSelectCharacter().name.equals(mustSelect.name)){
+            if (rick.getSelectCharacter().health <= 0) {
+                zombieCounter++;
+                if (zombieNo == zombieCounter) {
+                    isMissionCompleted = true;
+                    zombieCounter=0;
+                } else {
+                    isMissionCompleted = false;
+                }
+            }else if(rick.getSelectCharacter().getClass().equals(GoodCharacters.class)){
+                isMissionCompleted = true;
+            }
         }else{
+            if (rick.getSelectCharacter().health <= 0) {
+                zombieCounter++;
+            }
             isMissionCompleted = false;
         }
    }
