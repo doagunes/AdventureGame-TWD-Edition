@@ -145,7 +145,7 @@ public class Chapter {
             }
         }
 
-        if (rick.getSelectCharacter().health <= 0) {rick.getSelectCharacter().setHealth(100);}
+        //if (rick.getSelectCharacter().health <= 0) {rick.getSelectCharacter().setHealth(100);}
     }
     public void isUserWantToEscape() {
         int escapeNo;// if it would 1 then our continueAttack will be false
@@ -300,7 +300,7 @@ public class Chapter {
         if(no == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
                 if(MainCharacter.health <= 0){
-                    break;
+                    return; //metottan çıkılması için break yerine kullanıldı!!!
                 }
                 showMission(no);
                 System.out.println();
@@ -321,7 +321,7 @@ public class Chapter {
         else if(no == 2){
             for(mission2Index=0;mission2Index<missions2.size();){
                 if(MainCharacter.health <= 0){
-                    break;
+                    return;
                 }
                 showMission(no);
                 System.out.println();
@@ -340,7 +340,7 @@ public class Chapter {
         else if(no == 3){
             for(mission3Index=0;mission3Index<missions3.size();){
                 if(MainCharacter.health <= 0){
-                    break;
+                    return;
                 }
                 showMission(no);
                 System.out.println();
@@ -355,7 +355,7 @@ public class Chapter {
                 actionDirection();
                 nextMission(no);
                 if(mission3Index == missions3.size()){
-                    break;
+                    return;
                 }
             }
         }
@@ -402,7 +402,8 @@ public class Chapter {
             if (!currentPlacesList.get(i).getName().equals("Camp") && !currentPlacesList.get(i).getName().equals("Farm")
                     && !currentPlacesList.get(i).getName().equals("Prison") && !currentPlacesList.get(i).getName().equals("WoodBury")) {
                 for (int j = 0;j<maxZombieNo;j++) {
-                    currentPlacesList.get(i).getCharacters().add(zombie);
+                    currentPlacesList.get(i).getCharacters().add(new Zombie("Zombie", zombieInventory, 20, (double) 1/100,
+                            (double) 2/10, "whaaaaaaaa", "whaaaaaaaa", true));
 
 
                 }

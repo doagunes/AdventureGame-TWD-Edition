@@ -22,8 +22,10 @@ public class Mission {
 
    public void isMissionCompleted(MainCharacter rick){
         isMissionCompleted = false;
-        if(rick.getSelectCharacter() == mustSelect){
-            isMissionCompleted = true;
+        if(rick.getSelectCharacter().name.equals(mustSelect.name)){
+            if(rick.getSelectCharacter().health <= 0){
+                isMissionCompleted = true;
+            }
         }else{
             isMissionCompleted = false;
         }
