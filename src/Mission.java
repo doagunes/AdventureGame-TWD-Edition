@@ -26,13 +26,18 @@ public class Mission {
         isMissionCompleted = false;
         if(rick.getSelectCharacter().name.equals(mustSelect.name)){
             if (rick.getSelectCharacter().health <= 0) {
-                zombieCounter++;
-                if (zombieNo == zombieCounter) {
-                    isMissionCompleted = true;
-                    zombieCounter=0;
+                if(rick.getSelectCharacter().name.equals("Zombie")){
+                    zombieCounter++;
+                    if (zombieNo == zombieCounter) {
+                        isMissionCompleted = true;
+                        zombieCounter=0;
+                    } else {
+                        isMissionCompleted = false;
+                    }
                 } else {
-                    isMissionCompleted = false;
+                    isMissionCompleted = true;
                 }
+
             }else if(rick.getSelectCharacter().getClass().equals(GoodCharacters.class)){
                 isMissionCompleted = true;
             }
@@ -51,7 +56,6 @@ public class Mission {
     public Character getMustSelect() {
         return mustSelect;
     }
-
 
     public String getDescription() {
         return description;
