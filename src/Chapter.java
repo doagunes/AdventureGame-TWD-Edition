@@ -114,7 +114,7 @@ public class Chapter {
     Mission m25 = new Mission("Kill Shane and escape from the farm", shane, p25);
     Mission m31 = new Mission("Talk to Darly", darly, p31);
     Mission m32 = new Mission("Talk with Carl", carl, p32);
-    Mission m33 = new Mission("Save Glenn and Maggie", governor, p33);
+    Mission m33 = new Mission("Save Glenn and Maggie", glenn, p33);
     Mission m34 = new Mission("Kill zombies", zombie, p34);
     Mission m35 = new Mission("Battle with the governor and his crew", governor, p35); // Todo: Vali ölmeyecek şekilde tekrardan kodla!!!
 
@@ -391,7 +391,7 @@ public class Chapter {
 
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
-        maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+        maxZombieNo = random.nextInt(1) + 1; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
         ArrayList<Places> currentPlacesList = new ArrayList<>();
         switch (chapterNo) {
             case 1 -> currentPlacesList = places1;
