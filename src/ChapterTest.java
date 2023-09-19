@@ -5,13 +5,18 @@ public class ChapterTest {
         Chapter chapter = new Chapter(1);
         chapter.addCharactersToPlaces(1);
 
-        System.out.println(chapter.p11.getCharacters().get(0).health);
-        System.out.println(chapter.p11.getCharacters().get(1).health);
+        int x = chapter.p11.getCharacters().size();
 
-        chapter.p11.getCharacters().get(0).health -= 50;
+        chapter.p11.getCharacters().clear();
 
-        System.out.println(chapter.p11.getCharacters().get(0).health);
-        System.out.println(chapter.p11.getCharacters().get(1).health);
+        for (int i = 0;i<chapter.p11.getCharacters().size();i++) {
+            System.out.println(chapter.p11.getCharacters().get(i).name);
+        }
+        System.out.println("00000");
+        for (int i = 0;i<chapter.p12.getCharacters().size();i++) {
+            System.out.println(chapter.p12.getCharacters().get(i).name);
+        }
+
 
 
     }
