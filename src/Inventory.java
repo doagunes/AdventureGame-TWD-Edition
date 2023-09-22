@@ -4,6 +4,7 @@ public class Inventory {
     private double currentAmmo;
     private int ammoPerMagazine;
     private int extraMagazine;
+    private static int bandageNumber;
 
     public Inventory(String weaponName) {
         this.weaponName = weaponName;
@@ -11,9 +12,19 @@ public class Inventory {
         currentAmmo = 6;
         ammoPerMagazine = 6;
         extraMagazine = 5;
+        bandageNumber = 10;
     }
 
+
     public Inventory() {
+    }
+
+    public static int getBandageNumber() {
+        return bandageNumber;
+    }
+
+    public static void setBandageNumber(int bandageNumber) {
+        Inventory.bandageNumber = bandageNumber;
     }
 
     public String getWeaponName() {

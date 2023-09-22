@@ -5,7 +5,12 @@ import java.util.Scanner;
 public class Chapter {
     Scanner mySc = new Scanner(System.in);
     private int chapterNo;
-    private int selectionNo = 0;
+    public static int selectionNo = 0;
+
+    private boolean continueAttack = true;
+    int maxZombieNo;
+
+
 
     Mission mis = new Mission();
     ArrayList<Mission> missions1 = new ArrayList<>();
@@ -34,33 +39,34 @@ public class Chapter {
     Inventory michonneInventory = new Inventory();
 
 
-    MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 1 /2,
-            (double) 1 /4, "Hello how is it going?", "nope, ı don't think so");
-    Character darly = new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
-            (double) 1/5, "Let's go man", "I ain’t no one’s b*tch");
-    Character morgan = new GoodCharacters("Morgan", morganInventory, 22, (double) 7/9,
-            (double) 2/5, "We’re not doing careful. We’re doing right", "This world... we're always on our own.");
-    Character lori = new GoodCharacters("Lori Grimes", loriInventory, 5, (double) 1/12,
-            (double) 1/8, "No problem, ı get it", "Maybe this isn’t a world for children anymore.");
-    Character shane = new Person("Shane Walsh", shaneInventory, 33, (double) 1/3,
-            (double) 1/4, "Okay buddy you are the chief", "Rick, you can’t just be the good guy and expect to live. Okay? Not anymore.");
-    Character carl = new GoodCharacters("Carl Grimes", carlInventory, 8, (double) 1/10,
-            (double) 1/20, "Okay daddy, love ya", "I am not a kid any more, okay!!");
-    Character governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 2/10,
-            (double) 2/10, "You're making the decisions today, Rick!", "Liar!!!");
-    Character zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1 / 10,
-            (double) 1 / 10, "whaaaaaaaa", "whaaaaaaaa");
-    Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
-            (double) 1/5, "ı am in love with maggie", "ı am not a chinesee ı am a coreannn mother fu*kerrrrrr!!");
-    Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
-            (double) 2/5, "okay let's do it", "ı am with glenn fu*k of");
-    Character hershel = new GoodCharacters("Hershel Greene", hershelInventory, 10, (double) 1/9,
-            (double) 2/5, "be with god, amen", "hey you who the hell you that you can cut my leg huh ??!!");
-    Character carol = new GoodCharacters("Carol", carolInventory, 8, (double) 1/9,
-            (double) 2/5, "I miss my vibrator.", "Some people just can't give up. Like us.");
-    Character michonne = new GoodCharacters("Michonne", michonneInventory, 25, (double) 6/9,
-            (double) 2/5, "We’re gonna catch up with a lot of things and we’re gonna end them.", "Anger makes you stupid. Stupid gets you killed.");
 
+    MainCharacter rick = new MainCharacter("Rick Grimes", rickInventory, 28, (double) 5/10,
+            (double) 3 /10, "Hello how is it going?", "nope, ı don't think so", false);
+    Character darly= new GoodCharacters("Darly Dixon", darlyInventory, 35, (double) 2/3,
+            (double) 3 /10, "Hello how is it going?", "nope, ı don't think so", false);
+    Character morgan = new GoodCharacters("Morgan", morganInventory, 22, (double) 7/9,
+            (double) 4/10, "We’re not doing careful. We’re doing right", "This world... we're always on our own.", false);
+    Character lori = new GoodCharacters("Lori Grimes", loriInventory, 5, (double) 1/12,
+            (double) 1/10, "No problem, ı get it",  "Maybe this isn’t a world for children anymore.",false);
+    BadCharacters shane = new Person("Shane Walsh", shaneInventory, 33, (double) 4/100,
+            (double) 3/10, "Okay buddy you are the chief", "Rick, you can’t just be the good guy and expect to live. Okay? Not anymore."
+    ,true);
+    Character carl = new GoodCharacters("Carl Grimes", carlInventory, 8, (double) 1/10,
+            (double) 1/10, "Okay daddy, love ya", "I am not a kid any more, okay!!", false);
+    BadCharacters governor = new Person("Philip Blake(Governor)", governorInventory, 30, (double) 3/100,
+            (double) 2/10, "You're making the decisions today, Rick!", "Liar!!!", true);
+    BadCharacters zombie = new Zombie("Zombie", zombieInventory, 20, (double) 1/100,
+            (double) 2/10, "whaaaaaaaa", "whaaaaaaaa", true);
+    Character glenn = new GoodCharacters("Glenn Rhee", glennInventory, 33, (double) 1/4,
+            (double) 3/10, "ı am in love with maggie", "ı am not a chinesee ı am a korean mother fu*kerrrrrr!!", false);
+    Character maggie = new GoodCharacters("Maggie Greene", maggieInventory, 22, (double) 7/9,
+            (double) 2/10, "okay let's do it", "ı am with glenn fu*k of", false);
+    Character hershel = new GoodCharacters("Hershel Greene", hershelInventory, 10, (double) 1/9,
+            (double) 2/10, "be with god, amen", "hey you who the hell you that you can cut my leg huh ??!!", false);
+    Character carol = new GoodCharacters("Carol", carolInventory, 8, (double) 1/9,
+            (double) 4/10, "I miss my vibrator.", "Some people just can't give up. Like us.", false);
+    Character michonne = new GoodCharacters("Michonne", michonneInventory, 25, (double) 6/9,
+            (double) 5/10, "We’re gonna catch up with a lot of things and we’re gonna end them.", "Anger makes you stupid. Stupid gets you killed.", false);
     int missionIndex = 0;
     private int mission2Index = 0;
     private int mission3Index = 0;
@@ -108,18 +114,78 @@ public class Chapter {
     Mission m25 = new Mission("Kill Shane and escape from the farm", shane, p25);
     Mission m31 = new Mission("Talk to Darly", darly, p31);
     Mission m32 = new Mission("Talk with Carl", carl, p32);
-    Mission m33 = new Mission("Save Glenn and Maggie", governor, p33);
+    Mission m33 = new Mission("Save Glenn and Maggie", glenn, p33);
     Mission m34 = new Mission("Kill zombies", zombie, p34);
-    Mission m35 = new Mission("Battle with the governor and his crew", governor, p35);
+    Mission m35 = new Mission("Battle with the governor and his crew", governor, p35); // Todo: Vali ölmeyecek şekilde tekrardan kodla!!!
 
     /*
        Todo: Burada mission 4 objeleri oluşturulacak!!!!
 
      */
 
+    public void attackScreen(Character enemy) { // fonksiyonu kullanırken paramtere olan enemy yerine rick.getSelectedCharacter() gelicek method içinde kullanılmayı kolaylaştırıyor
+        for (Character character : p12.getCharacters()) {
+            System.out.println(character.name);
+        }
+        int turnNo = 1;
+        continueAttack = true;
+        System.out.println(rick.getSelectCharacter().health);
+        while (MainCharacter.health > 0 && rick.getSelectCharacter().health > 0 && continueAttack) {
+            if (turnNo % 2 != 0) { // turn is on rick
+                showCharsInfo();
+                rick.warningHealthMetod(); // Todo: BENHURA SORRR
+                isUserWantToEscape();
+                if(!continueAttack){
+                    break;
+                }
+                System.out.println("Turn is yours you can attack..");
+                rick.attackToBadCharacter(rick.getSelectCharacter()); //
+                turnNo++;
+            } else {
+                showCharsInfo();
+                System.out.println("Turn is on : " + enemy.name);
+                enemy.attackTo(rick);
+                turnNo++;
+            }
+        }
 
+        //if (rick.getSelectCharacter().health <= 0) {rick.getSelectCharacter().setHealth(100);}
+    }
+    public void isUserWantToEscape() {
+        int escapeNo;// if it would 1 then our continueAttack will be false
+        boolean hataliGiris = true;
+
+        while (hataliGiris) {
+            System.out.println("If you want to end attack end escape please press 1, if you want to continue then press 0");
+            String userEnter = mySc.nextLine();
+            try {
+                escapeNo = Integer.parseInt(userEnter);
+                if (escapeNo == 1) {
+                    hataliGiris = false;
+                    continueAttack = false;
+                } else if (escapeNo == 0){
+                    continueAttack = true;
+                    break;
+                }
+            } catch (NumberFormatException exception) {
+                System.out.println("You haven't entered a valid number please try again with valid numbers \n");
+            }
+        }
+    }
+
+    public void actionDirection() {
+        rick.isGoodCharacter();
+        if (!rick.isGood) {
+            attackScreen(rick.getSelectCharacter());
+        } else {
+            rick.talkWithCharacters(lori, carol, hershel);
+        }
+    }
 
     public Chapter(int chapterNo) {
+
+
+
 
         switch (chapterNo){
             case 1: missions1.add(m11);
@@ -166,29 +232,45 @@ public class Chapter {
 
     }
 
-    public void nextMission(int chapterNo){
-
+    public void nextMission(int chapterNo){ // paramatere var chapter no diye
         if(chapterNo == 1){
+
+
+                missions1.get(missionIndex).isMissionCompleted(rick, maxZombieNo);
+
+
             for(Mission missions : missions1){
                     missions.isMissionCompleted(rick);
                 }
+
             if(missions1.get(missionIndex).isMissionCompleted){
                 missionIndex++;
             }
 
         } else if(chapterNo == 2){
+
+
+            missions2.get(mission2Index).isMissionCompleted(rick, maxZombieNo);
+
+
             for(Mission missions2 : missions2){
                 missions2.isMissionCompleted(rick);
             }
+
             if(missions2.get(mission2Index).isMissionCompleted){
                 mission2Index++;
             }
 
         }else if(chapterNo == 3){
 
+
+            missions3.get(mission3Index).isMissionCompleted(rick, maxZombieNo);
+
+
             for(Mission missions3 : missions3){
                 missions3.isMissionCompleted(rick);
             }
+
             if(missions3.get(mission3Index).isMissionCompleted){
                 mission3Index++;
             }
@@ -200,16 +282,16 @@ public class Chapter {
         if(chapterNo == 1){
 
             System.out.println("Place Name: " + missions1.get(missionIndex).getPlace().getName() + "\n" +
-                    "Mission Description: " + missions1.get(missionIndex).getDescription() + "\n");
+                    "Mission Description: " + missions1.get(missionIndex).getDescription() );
 
         } else if(chapterNo == 2){
             System.out.println("Place name: " + missions2.get(mission2Index).getPlace().getName() + "\n" +
-                    "Mission Description: " + missions2.get(mission2Index).getDescription() + "\n");
+                    "Mission Description: " + missions2.get(mission2Index).getDescription() );
 
         }else if(chapterNo == 3){
 
             System.out.println("Place name: " + missions3.get(mission3Index).getPlace().getName() + "\n" +
-                    "Mission Description: " + missions3.get(mission3Index).getDescription() + "\n");
+                    "Mission Description: " + missions3.get(mission3Index).getDescription() );
 
         }
 
@@ -217,10 +299,17 @@ public class Chapter {
 
     public int selection(int maxLimit) {
         selectionNo = -1;
+        String selection = null;
         while (selectionNo <= 0 || selectionNo > maxLimit) {
             try {
                 System.out.println("Please select what do you want: ");
+
+                selection = mySc.nextLine();
+                selectionNo = Integer.parseInt(selection);
+                //mySc.nextLine();
+
                 selectionNo = mySc.nextInt();
+
             } catch (Exception exception) {
                 System.out.println("You have entered invalid character please try again!!");
             }
@@ -234,27 +323,36 @@ public class Chapter {
     }
 
 
-
-
-    public void showSelections(int no){
-        if(no == 1){
+    public void play(int chapterNo){
+        // Todo: rick öldüğünde bu metottan çıkacak!!!
+        if(chapterNo == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
-                showMission(no);
+                if(MainCharacter.health <= 0){
+                    return; //metottan çıkılması için break yerine kullanıldı!!!
+                }
+                showMission(chapterNo);
+                System.out.println();
+                missions1.get(missionIndex).getPlace().setCharactersNo();
                 for(int j=0;j<missions1.get(missionIndex).getPlace().getCharacters().size();j++){
-                    missions1.get(missionIndex).getPlace().setCharactersNo();
                     missions1.get(missionIndex).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
+
                 }
                 assignTheSelection(missions1.get(missionIndex).getPlace(), missions1.get(missionIndex).getPlace().
                         getCharacters().get(missions1.get(missionIndex).getPlace().getCharacters().size()-1).getCharacterNo());
-                nextMission(no);
-
+                actionDirection();
+                nextMission(chapterNo);
             }
+
         }
 
-        else if(no == 2){
+        else if(chapterNo == 2){
             for(mission2Index=0;mission2Index<missions2.size();){
-                showMission(no);
+                if(MainCharacter.health <= 0){
+                    return;
+                }
+                showMission(chapterNo);
+                System.out.println();
                 for(int j=0;j<missions2.get(mission2Index).getPlace().getCharacters().size();j++){
                     missions2.get(mission2Index).getPlace().setCharactersNo();
                     missions2.get(mission2Index).getPlace().getCharacters().get(j).act();
@@ -262,24 +360,42 @@ public class Chapter {
                 }
                 assignTheSelection(missions2.get(mission2Index).getPlace(), missions2.get(mission2Index).getPlace().
                         getCharacters().get(missions2.get(mission2Index).getPlace().getCharacters().size()-1).getCharacterNo());
+
+                actionDirection();
+                nextMission(chapterNo);
+
                 nextMission(no);
+
             }
         }
 
-        else if(no == 3){
+        else if(chapterNo == 3){
             for(mission3Index=0;mission3Index<missions3.size();){
-                showMission(no);
+                if(MainCharacter.health <= 0){
+                    return;
+                }
+                showMission(chapterNo);
+                System.out.println();
                 for(int j=0;j<missions3.get(mission3Index).getPlace().getCharacters().size();j++){
                     missions3.get(mission3Index).getPlace().setCharactersNo();
                     missions3.get(mission3Index).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
+
                 }
                 assignTheSelection(missions3.get(mission3Index).getPlace(), missions3.get(mission3Index).getPlace().
                         getCharacters().get(missions3.get(mission3Index).getPlace().getCharacters().size()-1).getCharacterNo());
+                actionDirection();
+                nextMission(chapterNo);
+                if(mission3Index == missions3.size()){
+                    return;
+                }
+
+                assignTheSelection(missions3.get(mission3Index).getPlace(), missions3.get(mission3Index).getPlace().
+                        getCharacters().get(missions3.get(mission3Index).getPlace().getCharacters().size()-1).getCharacterNo());
                 nextMission(no);
+
             }
         }
-
 
         /*
         Todo: Burası düzenlenecek
@@ -298,11 +414,25 @@ public class Chapter {
          */
 
     }
+    public void showCharsInfo() {
+        String formattedText1 = String.format("%-22s %-15s", rick.getName(), rick.getSelectCharacter().name);
+        String formattedText2 = String.format("Health: %-14f Health: %-15f", rick.health, rick.getSelectCharacter().health);
+        String formattedText3 = String.format("Power: %-15f Power: %-15f", rick.power, rick.getSelectCharacter().power);
+
+        System.out.println(formattedText1);
+        System.out.println(formattedText2);
+        System.out.println(formattedText3);
+    }
+
 
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
-        int maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+
+        maxZombieNo = random.nextInt(3) + 4; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+
+
         ArrayList<Places> currentPlacesList = new ArrayList<>();
+        maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
         switch (chapterNo) {
             case 1 -> currentPlacesList = places1;
             case 2 -> currentPlacesList = places2;
@@ -313,7 +443,8 @@ public class Chapter {
             if (!currentPlacesList.get(i).getName().equals("Camp") && !currentPlacesList.get(i).getName().equals("Farm")
                     && !currentPlacesList.get(i).getName().equals("Prison") && !currentPlacesList.get(i).getName().equals("WoodBury")) {
                 for (int j = 0;j<maxZombieNo;j++) {
-                    currentPlacesList.get(i).getCharacters().add(zombie);
+                    currentPlacesList.get(i).getCharacters().add(new Zombie("Zombie", zombieInventory, 20, (double) 1/100,
+                            (double) 2/10, "whaaaaaaaa", "whaaaaaaaa", true));
 
 
                 }
@@ -369,7 +500,12 @@ public class Chapter {
                 break;
         }
     }
+
+
+
+
     public void addOneMoreBadPerson() {
 
     }
+
 }

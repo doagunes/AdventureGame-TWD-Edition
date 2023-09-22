@@ -1,3 +1,6 @@
+
+import java.util.HashMap;
+
 // Press ⇧ twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -37,12 +40,12 @@ public class Main {
         System.out.println(mis.isCompleted);
 
 
-        /*
-        for(int i=0;i<cha.missions2.size();i++){
-            System.out.println(cha.missions2.get(i).getName());
-        }
+public class Main {
 
-         */
+    public static void main(String[] args) throws InterruptedException {
+
+        Game game = new Game();
+        game.gamePlay();
 
     }
 }
