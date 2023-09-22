@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Chapter {
     Scanner mySc = new Scanner(System.in);
     private int chapterNo;
-    private int selectionNo = 0;
+    public static int selectionNo = 0;
 
     private boolean continueAttack = true;
     int maxZombieNo;

@@ -52,8 +52,8 @@ public class Places {
     }
 
     public void eliminateSelection () {
-        selectionMap.remove(1);
-        characters.remove(0);
+        selectionMap.remove(Chapter.selectionNo);
+        characters.remove(Chapter.selectionNo-1);
         setCharactersNo();
     }
 }
