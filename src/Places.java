@@ -53,6 +53,7 @@ public class Places {
         this.selectionMap = selectionMap;
     }
 
+
     /*
     public void eliminateSelection () {
         selectionMap.remove(Chapter.selectionNo);
@@ -75,4 +76,5 @@ public class Places {
     public void setTotalZombieNo(int totalZombieNo) {
         this.totalZombieNo = totalZombieNo;
     }
+
 }

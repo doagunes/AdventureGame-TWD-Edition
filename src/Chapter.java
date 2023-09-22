@@ -183,6 +183,10 @@ public class Chapter {
     }
 
     public Chapter(int chapterNo) {
+
+
+
+
         switch (chapterNo){
             case 1: missions1.add(m11);
                     missions1.add(m12);
@@ -231,7 +235,13 @@ public class Chapter {
     public void nextMission(int chapterNo){ // paramatere var chapter no diye
         if(chapterNo == 1){
 
+
                 missions1.get(missionIndex).isMissionCompleted(rick, maxZombieNo);
+
+
+            for(Mission missions : missions1){
+                    missions.isMissionCompleted(rick);
+                }
 
             if(missions1.get(missionIndex).isMissionCompleted){
                 missionIndex++;
@@ -239,7 +249,13 @@ public class Chapter {
 
         } else if(chapterNo == 2){
 
+
             missions2.get(mission2Index).isMissionCompleted(rick, maxZombieNo);
+
+
+            for(Mission missions2 : missions2){
+                missions2.isMissionCompleted(rick);
+            }
 
             if(missions2.get(mission2Index).isMissionCompleted){
                 mission2Index++;
@@ -247,7 +263,13 @@ public class Chapter {
 
         }else if(chapterNo == 3){
 
+
             missions3.get(mission3Index).isMissionCompleted(rick, maxZombieNo);
+
+
+            for(Mission missions3 : missions3){
+                missions3.isMissionCompleted(rick);
+            }
 
             if(missions3.get(mission3Index).isMissionCompleted){
                 mission3Index++;
@@ -281,9 +303,13 @@ public class Chapter {
         while (selectionNo <= 0 || selectionNo > maxLimit) {
             try {
                 System.out.println("Please select what do you want: ");
+
                 selection = mySc.nextLine();
                 selectionNo = Integer.parseInt(selection);
                 //mySc.nextLine();
+
+                selectionNo = mySc.nextInt();
+
             } catch (Exception exception) {
                 System.out.println("You have entered invalid character please try again!!");
             }
@@ -334,8 +360,12 @@ public class Chapter {
                 }
                 assignTheSelection(missions2.get(mission2Index).getPlace(), missions2.get(mission2Index).getPlace().
                         getCharacters().get(missions2.get(mission2Index).getPlace().getCharacters().size()-1).getCharacterNo());
+
                 actionDirection();
                 nextMission(chapterNo);
+
+                nextMission(no);
+
             }
         }
 
@@ -359,6 +389,11 @@ public class Chapter {
                 if(mission3Index == missions3.size()){
                     return;
                 }
+
+                assignTheSelection(missions3.get(mission3Index).getPlace(), missions3.get(mission3Index).getPlace().
+                        getCharacters().get(missions3.get(mission3Index).getPlace().getCharacters().size()-1).getCharacterNo());
+                nextMission(no);
+
             }
         }
 
@@ -466,5 +501,11 @@ public class Chapter {
         }
     }
 
+
+
+
+    public void addOneMoreBadPerson() {
+
+    }
 
 }
