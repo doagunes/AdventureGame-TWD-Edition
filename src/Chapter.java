@@ -124,6 +124,9 @@ public class Chapter {
      */
 
     public void attackScreen(Character enemy) { // fonksiyonu kullanırken paramtere olan enemy yerine rick.getSelectedCharacter() gelicek method içinde kullanılmayı kolaylaştırıyor
+        for (Character character : p12.getCharacters()) {
+            System.out.println(character.name);
+        }
         int turnNo = 1;
         continueAttack = true;
         System.out.println(rick.getSelectCharacter().health);
@@ -225,8 +228,7 @@ public class Chapter {
 
     }
 
-    public void nextMission(int chapterNo){
-
+    public void nextMission(int chapterNo){ // paramatere var chapter no diye
         if(chapterNo == 1){
             for(Mission missions : missions1){
                     missions.isMissionCompleted(rick, maxZombieNo);
@@ -296,17 +298,17 @@ public class Chapter {
     }
 
 
-    public void play(int no){
+    public void play(int chapterNo){
         // Todo: rick öldüğünde bu metottan çıkacak!!!
-        if(no == 1){
+        if(chapterNo == 1){
             for(missionIndex=0;missionIndex<missions1.size();){
                 if(MainCharacter.health <= 0){
                     return; //metottan çıkılması için break yerine kullanıldı!!!
                 }
-                showMission(no);
+                showMission(chapterNo);
                 System.out.println();
+                missions1.get(missionIndex).getPlace().setCharactersNo();
                 for(int j=0;j<missions1.get(missionIndex).getPlace().getCharacters().size();j++){
-                    missions1.get(missionIndex).getPlace().setCharactersNo();
                     missions1.get(missionIndex).getPlace().getCharacters().get(j).act();
                     System.out.println("\n");
 
@@ -314,17 +316,17 @@ public class Chapter {
                 assignTheSelection(missions1.get(missionIndex).getPlace(), missions1.get(missionIndex).getPlace().
                         getCharacters().get(missions1.get(missionIndex).getPlace().getCharacters().size()-1).getCharacterNo());
                 actionDirection();
-                nextMission(no);
+                nextMission(chapterNo);
             }
 
         }
 
-        else if(no == 2){
+        else if(chapterNo == 2){
             for(mission2Index=0;mission2Index<missions2.size();){
                 if(MainCharacter.health <= 0){
                     return;
                 }
-                showMission(no);
+                showMission(chapterNo);
                 System.out.println();
                 for(int j=0;j<missions2.get(mission2Index).getPlace().getCharacters().size();j++){
                     missions2.get(mission2Index).getPlace().setCharactersNo();
@@ -334,16 +336,16 @@ public class Chapter {
                 assignTheSelection(missions2.get(mission2Index).getPlace(), missions2.get(mission2Index).getPlace().
                         getCharacters().get(missions2.get(mission2Index).getPlace().getCharacters().size()-1).getCharacterNo());
                 actionDirection();
-                nextMission(no);
+                nextMission(chapterNo);
             }
         }
 
-        else if(no == 3){
+        else if(chapterNo == 3){
             for(mission3Index=0;mission3Index<missions3.size();){
                 if(MainCharacter.health <= 0){
                     return;
                 }
-                showMission(no);
+                showMission(chapterNo);
                 System.out.println();
                 for(int j=0;j<missions3.get(mission3Index).getPlace().getCharacters().size();j++){
                     missions3.get(mission3Index).getPlace().setCharactersNo();
@@ -354,7 +356,7 @@ public class Chapter {
                 assignTheSelection(missions3.get(mission3Index).getPlace(), missions3.get(mission3Index).getPlace().
                         getCharacters().get(missions3.get(mission3Index).getPlace().getCharacters().size()-1).getCharacterNo());
                 actionDirection();
-                nextMission(no);
+                nextMission(chapterNo);
                 if(mission3Index == missions3.size()){
                     return;
                 }
@@ -391,8 +393,12 @@ public class Chapter {
 
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
+
         maxZombieNo = random.nextInt(3) + 4; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+
+
         ArrayList<Places> currentPlacesList = new ArrayList<>();
+        maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
         switch (chapterNo) {
             case 1 -> currentPlacesList = places1;
             case 2 -> currentPlacesList = places2;
