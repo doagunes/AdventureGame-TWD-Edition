@@ -25,24 +25,40 @@ public class Mission {
 
         isMissionCompleted = false;
         /*
-        if(rick.getSelectCharacter().name.equals(mustSelect.name)){
-            switch (rick.getSelectCharacter().name) {
-                case "Zombie" :
-                    if (rick.getSelectCharacter().health <= 0) {
-                        zombieCounter++;
-                        isMissionCompleted = (zombieNo == zombieCounter);
-                    } else {
-                        isMissionCompleted = false;
-                    }
-                default:
-                    isMissionCompleted = (rick.getSelectCharacter().health <= 0);
 
+        if (rick.getSelectCharacter().name.equals(mustSelect.name)) {
+            if (rick.getSelectCharacter().health <= 0) {
+                if (rick.getSelectCharacter().name.equals("Zombie")) {
+                    zombieCounter++;
+
+                }
             }
         } else {
             isMissionCompleted = false;
         }
 
          */
+        if(rick.getSelectCharacter().name.equals(mustSelect.name)){
+            if (rick.getSelectCharacter().name.equals("Zombie")) {
+                if (rick.getSelectCharacter().health <= 0) {
+                    zombieCounter++;
+                    deleteSelections();
+                    isMissionCompleted = (zombieNo == zombieCounter);
+                } else {
+                    isMissionCompleted = false;
+                }
+            } else if (rick.getSelectCharacter().getClass().equals(BadCharacters.class)) {
+                if (rick.getSelectCharacter().health <= 0) {
+                    isMissionCompleted = true;
+                }
+            } else if (rick.getSelectCharacter().getClass().equals(GoodCharacters.class)) {
+                isMissionCompleted = true;
+            }
+        } else {
+            isMissionCompleted = false;
+        }
+
+        /*
         if(rick.getSelectCharacter().name.equals(mustSelect.name)){
             if (rick.getSelectCharacter().health <= 0) {
 
@@ -75,6 +91,9 @@ public class Mission {
             }
             isMissionCompleted = false;
         }
+        }
+
+         */
     }
 
     public Places getPlace() {
@@ -104,5 +123,11 @@ public class Mission {
     public boolean isMissionCompleted() {
         return isMissionCompleted;
     }
+
+    private void deleteSelections () {
+        place.getSelectionMap().remove(Chapter.selectionNo);
+        place.getCharacters().remove(Chapter.selectionNo-1);
+    }
+
 
 }
