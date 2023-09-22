@@ -124,6 +124,10 @@ public class Chapter {
      */
 
     public void attackScreen(Character enemy) { // fonksiyonu kullanırken paramtere olan enemy yerine rick.getSelectedCharacter() gelicek method içinde kullanılmayı kolaylaştırıyor
+        for (Character character : p11.getCharacters()) {
+            System.out.println(character.name);
+        }
+        System.out.println("*******");
         for (Character character : p12.getCharacters()) {
             System.out.println(character.name);
         }
@@ -317,8 +321,8 @@ public class Chapter {
         return selectionNo;
     }
 
-    public void assignTheSelection(Places place, int maxLimit) {
-        int selectedNo = selection(maxLimit);
+    public void assignTheSelection(Places place, int maxLimit) {  // 1) 2) 3) 4)
+        int selectedNo = selection(maxLimit); // 2.şık mesela
         rick.setSelectCharacter(place.getSelectionMap().get(selectedNo));
     }
 
@@ -427,23 +431,20 @@ public class Chapter {
 
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
-
-        maxZombieNo = random.nextInt(3) + 4; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
-
-
-        ArrayList<Places> currentPlacesList = new ArrayList<>();
+        ArrayList<Mission> currentMissionList = new ArrayList<>();
         maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
         switch (chapterNo) {
-            case 1 -> currentPlacesList = places1;
-            case 2 -> currentPlacesList = places2;
-            case 3 -> currentPlacesList = places3;
-            case 4 -> currentPlacesList = places4;
+            case 1 -> currentMissionList = missions1;
+            case 2 -> currentMissionList = missions2;
+            case 3 -> currentMissionList = missions3;
+            case 4 -> currentMissionList = missions4;
         }
-        for (int i = 0;i<currentPlacesList.size();i++) {
-            if (!currentPlacesList.get(i).getName().equals("Camp") && !currentPlacesList.get(i).getName().equals("Farm")
-                    && !currentPlacesList.get(i).getName().equals("Prison") && !currentPlacesList.get(i).getName().equals("WoodBury")) {
+
+        for (int i = 0;i<currentMissionList.size();i++) {
+            if (!currentMissionList.get(i).getPlace().getName().equals("Camp") && !currentMissionList.get(i).getPlace().getName().equals("Farm")
+                    && !currentMissionList.get(i).getPlace().getName().equals("Prison") && !currentMissionList.get(i).getPlace().getName().equals("WoodBury")) {
                 for (int j = 0;j<maxZombieNo;j++) {
-                    currentPlacesList.get(i).getCharacters().add(new Zombie("Zombie", zombieInventory, 20, (double) 1/100,
+                    currentMissionList.get(i).getPlace().getCharacters().add(new Zombie("Zombie", zombieInventory, 20, (double) 1/100,
                             (double) 2/10, "whaaaaaaaa", "whaaaaaaaa", true));
 
 

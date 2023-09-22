@@ -51,7 +51,10 @@ public class Mission {
                 }
             } else if (rick.getSelectCharacter().getClass().equals(BadCharacters.class)) {
                 if (rick.getSelectCharacter().health <= 0) {
+<<<<<<< Updated upstream
                     System.out.println("BURAYA GİRDİİİİİ");
+=======
+>>>>>>> Stashed changes
                     deleteSelections();
                     isMissionCompleted = true;
                 }
@@ -60,6 +63,7 @@ public class Mission {
                 isMissionCompleted = true;
             }
         } else {
+<<<<<<< Updated upstream
 
                 if (rick.getSelectCharacter().name.equals("Zombie")) {
                     if (rick.getSelectCharacter().health <= 0) {
@@ -72,6 +76,10 @@ public class Mission {
 
                 isMissionCompleted = false;
 
+=======
+            System.out.println("çıkması lazım yazının");
+            isMissionCompleted = false;
+>>>>>>> Stashed changes
         }
 
         /*
@@ -144,6 +152,5 @@ public class Mission {
         place.getSelectionMap().remove(Chapter.selectionNo);
         place.getCharacters().remove(Chapter.selectionNo-1);
     }
-
 
 }
