@@ -238,43 +238,19 @@ public class Chapter {
 
     public void nextMission(int chapterNo){ // paramatere var chapter no diye
         if(chapterNo == 1){
-
-
-                missions1.get(missionIndex).isMissionCompleted(rick, maxZombieNo);
-
-
-            for(Mission missions : missions1){
-                    missions.isMissionCompleted(rick);
-                }
-
+            missions1.get(missionIndex).isMissionCompleted(rick, maxZombieNo);
             if(missions1.get(missionIndex).isMissionCompleted){
                 missionIndex++;
             }
 
         } else if(chapterNo == 2){
-
-
             missions2.get(mission2Index).isMissionCompleted(rick, maxZombieNo);
-
-
-            for(Mission missions2 : missions2){
-                missions2.isMissionCompleted(rick);
-            }
-
             if(missions2.get(mission2Index).isMissionCompleted){
                 mission2Index++;
             }
 
         }else if(chapterNo == 3){
-
-
             missions3.get(mission3Index).isMissionCompleted(rick, maxZombieNo);
-
-
-            for(Mission missions3 : missions3){
-                missions3.isMissionCompleted(rick);
-            }
-
             if(missions3.get(mission3Index).isMissionCompleted){
                 mission3Index++;
             }
