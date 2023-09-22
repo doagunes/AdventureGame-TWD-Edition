@@ -393,6 +393,10 @@ public class Chapter {
 
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
+
+        maxZombieNo = random.nextInt(3) + 4; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+
+
         ArrayList<Places> currentPlacesList = new ArrayList<>();
         maxZombieNo = random.nextInt(4) + 3; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
         switch (chapterNo) {
