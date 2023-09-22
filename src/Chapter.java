@@ -391,7 +391,7 @@ public class Chapter {
 
     public void addZombieToPlace(int chapterNo) {
         Random random = new Random();
-        maxZombieNo = random.nextInt(1) + 1; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
+        maxZombieNo = random.nextInt(3) + 4; // 3 ila 6 arasında ranodm bi sayı çıkıyor (6 dahil);
         ArrayList<Places> currentPlacesList = new ArrayList<>();
         switch (chapterNo) {
             case 1 -> currentPlacesList = places1;
