@@ -42,20 +42,36 @@ public class Mission {
             if (rick.getSelectCharacter().name.equals("Zombie")) {
                 if (rick.getSelectCharacter().health <= 0) {
                     zombieCounter++;
+                    System.out.println("BURAYA GİRDİİİİİ");
                     deleteSelections();
                     isMissionCompleted = (zombieNo == zombieCounter);
                 } else {
+
                     isMissionCompleted = false;
                 }
             } else if (rick.getSelectCharacter().getClass().equals(BadCharacters.class)) {
                 if (rick.getSelectCharacter().health <= 0) {
+                    System.out.println("BURAYA GİRDİİİİİ");
+                    deleteSelections();
                     isMissionCompleted = true;
                 }
             } else if (rick.getSelectCharacter().getClass().equals(GoodCharacters.class)) {
+
                 isMissionCompleted = true;
             }
         } else {
-            isMissionCompleted = false;
+
+                if (rick.getSelectCharacter().name.equals("Zombie")) {
+                    if (rick.getSelectCharacter().health <= 0) {
+                        zombieCounter++;
+                        System.out.println("BURAYA GİRDİİİİİ");
+                        deleteSelections();
+
+                    }
+                }
+
+                isMissionCompleted = false;
+
         }
 
         /*
